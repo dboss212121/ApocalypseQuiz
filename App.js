@@ -1,11 +1,11 @@
 // App.js
 
+import { Audio } from 'expo-av';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image, Animated, Easing, Modal } from 'react-native';
 import { Alert } from 'react-native';
-
 
 const getFonts = () => Font.loadAsync({
   'press-start': require('./assets/fonts/PressStart2P-Regular.ttf'),
@@ -15,8 +15,8 @@ const getFonts = () => Font.loadAsync({
 // TITLE SCREEN COMPONENT
 // =======================
 const TitleScreen = ({ onStart }) => {
-  const fadeAnim = useState(new Animated.Value(0))[0]; // fade for title/subtitle
-  const pulseAnim = useState(new Animated.Value(0))[0]; // start invisible
+  const fadeAnim = useState(new Animated.Value(0))[0];   // fade for title/subtitle
+  const pulseAnim = useState(new Animated.Value(0))[0];  // pulse for "tap to start"
 
   useEffect(() => {
     // Fade in title/subtitle
@@ -48,7 +48,9 @@ const TitleScreen = ({ onStart }) => {
     <View style={styles.titleScreenContainer}>
       <Animated.View style={{ opacity: fadeAnim }}>
         <Text style={styles.titleText}>WELCOME TO THE APOCALYPSE QUIZ</Text>
-        <Text style={styles.subtitleText}>Find out how you survive the apocalypse</Text>
+        <Text style={styles.subtitleText}>
+          Find out how you survive the apocalypse
+        </Text>
       </Animated.View>
 
       <Animated.View style={{ opacity: pulseAnim }}>
@@ -68,10 +70,10 @@ const allQuestions = [
     alt: "A rising mushroom cloud casting an eerie glow over ruins" 
   },
   options: [
-    { text: 'Build a barricade out of canned beans', value: 'leader' },
-    { text: 'Climb a microwave tower to search for signal', value: 'support' },
-    { text: 'Loot everything that isn’t on fire', value: 'feral' },
-    { text: 'Meditate and accept the void', value: 'weird' },
+  { text: 'Build a barricade out of canned beans', value: 'receiptGolem' },
+  { text: 'Climb a microwave tower to search for signal', value: 'doomDJ' },
+  { text: 'Loot everything that isn’t on fire', value: 'glitterButcher' },
+  { text: 'Meditate and accept the void', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -81,10 +83,10 @@ const allQuestions = [
     alt: "A broken, buzzing machine with faint glowing wires" 
   },
   options: [
-    { text: 'Reverse-engineer it into a toaster', value: 'support' },
-    { text: 'Smash it immediately. No risks.', value: 'feral' },
-    { text: 'Lick it and chant softly', value: 'weird' },
-    { text: 'Turn it into a weapon', value: 'leader' },
+  { text: 'Reverse-engineer it into a toaster', value: 'cyborgCellist' },
+  { text: 'Smash it immediately. No risks.', value: 'molotovMixologist' },
+  { text: 'Lick it and chant softly', value: 'balloonNecromancer' },
+  { text: 'Turn it into a weapon', value: 'libraryCommando' },
   ]
 },
 {
@@ -94,10 +96,10 @@ const allQuestions = [
     alt: "A swarm of oversized glowing-eyed rats charging forward" 
   },
   options: [
-    { text: 'Negotiate. Even rats need HR', value: 'support' },
-    { text: 'Screech louder to establish dominance', value: 'feral' },
-    { text: 'Summon the spirits of sewer ancestors', value: 'weird' },
-    { text: 'Organize a neighborhood defense grid', value: 'leader' },
+  { text: 'Negotiate. Even rats need HR', value: 'cockroachNegotiator' },
+  { text: 'Screech louder to establish dominance', value: 'screamerScout' },
+  { text: 'Summon the spirits of sewer ancestors', value: 'trashOracle' },
+  { text: 'Organize a neighborhood defense grid', value: 'bureaucracyGhoul' },
   ]
 },
 {
@@ -107,10 +109,10 @@ const allQuestions = [
     alt: "A strange bioluminescent mushroom glowing with green light" 
   },
   options: [
-    { text: 'Accept it and name it Greg', value: 'weird' },
-    { text: 'Decline and file a report', value: 'leader' },
-    { text: 'Run away with it and laugh', value: 'feral' },
-    { text: 'Inspect it for medicinal use', value: 'support' },
+  { text: 'Accept it and name it Greg', value: 'duckPainter' },
+  { text: 'Decline and file a report', value: 'kaleChampion' },
+  { text: 'Run away with it and laugh', value: 'hamsterWarlord' },
+  { text: 'Inspect it for medicinal use', value: 'marshmallowGeneral' },
   ]
 }, 
 {
@@ -120,10 +122,10 @@ const allQuestions = [
     alt: "A pile of improvised weapons scattered across a cracked floor" 
   },
   options: [
-    { text: 'Clipboard with sharpened corners', value: 'leader' },
-    { text: 'Healing salve with a punch', value: 'support' },
-    { text: 'Nail bat covered in stickers', value: 'feral' },
-    { text: 'Cursed ukulele', value: 'weird' },
+  { text: 'Clipboard with sharpened corners', value: 'bureaucracyGhoul' },
+  { text: 'Healing salve with a punch', value: 'mutantHRManager' },
+  { text: 'Nail bat covered in stickers', value: 'glitterButcher' },
+  { text: 'Cursed ukulele', value: 'doomDJ' },
   ]
 }, 
 {
@@ -133,10 +135,10 @@ const allQuestions = [
     alt: "A cracked old television flickering with static" 
   },
   options: [
-    { text: '“Disaster Diaries: Planning the Panic”', value: 'leader' },
-    { text: '“Survivor Support Circle”', value: 'support' },
-    { text: '“Cooking with Roadkill”', value: 'feral' },
-    { text: '“Whispers from the Ceiling Fan”', value: 'weird' },
+  { text: '“Disaster Diaries: Planning the Panic”', value: 'apocalypseConspiracyTheorist' },
+  { text: '“Survivor Support Circle”', value: 'mutantHRManager' },
+  { text: '“Cooking with Roadkill”', value: 'gnocchiNomad' },
+  { text: '“Whispers from the Ceiling Fan”', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -146,10 +148,10 @@ const allQuestions = [
     alt: "A fiery sunrise breaking over a ruined wasteland" 
   },
   options: [
-    { text: 'Inventory and affirmations', value: 'leader' },
-    { text: 'Stretch, share, and hydrate', value: 'support' },
-    { text: 'Scream into the mist', value: 'feral' },
-    { text: 'Sip tea with a ghost', value: 'weird' },
+  { text: 'Inventory and affirmations', value: 'receiptGolem' },
+  { text: 'Stretch, share, and hydrate', value: 'marshmallowGeneral' },
+  { text: 'Scream into the mist', value: 'screamerScout' },
+  { text: 'Sip tea with a ghost', value: 'skeletonBarista' },
   ]
 },
 {
@@ -159,10 +161,10 @@ const allQuestions = [
     alt: "A flickering bonfire surrounded by scavenged party decorations" 
   },
   options: [
-    { text: 'A tactical punch bowl', value: 'leader' },
-    { text: 'A box of shared memories', value: 'support' },
-    { text: 'A bag of teeth and glitter', value: 'feral' },
-    { text: 'A crystal that buzzes when stared at', value: 'weird' },
+  { text: 'A tactical punch bowl', value: 'molotovMixologist' },
+  { text: 'A box of shared memories', value: 'libraryCommando' },
+  { text: 'A bag of teeth and glitter', value: 'glitterButcher' },
+  { text: 'A crystal that buzzes when stared at', value: 'radioactivePhilosopher' },
   ]
 }, 
 {
@@ -172,10 +174,10 @@ const allQuestions = [
     alt: "A rusted vehicle with strange tubes and glowing fuel tanks" 
   },
   options: [
-    { text: 'Dried fruit and accountability', value: 'leader' },
-    { text: 'Feelings and essential oils', value: 'support' },
-    { text: 'Gremlin screams', value: 'feral' },
-    { text: 'Dreams of the old world', value: 'weird' },
+  { text: 'Dried fruit and accountability', value: 'kaleChampion' },
+  { text: 'Feelings and essential oils', value: 'mutantHRManager' },
+  { text: 'Gremlin screams', value: 'hamsterWarlord' },
+  { text: 'Dreams of the old world', value: 'origamiDetective' },
   ]
 },
 {
@@ -185,10 +187,10 @@ const allQuestions = [
     alt: "A towering robot covered in dents and scavenged armor" 
   },
   options: [
-    { text: 'Assign it as logistics coordinator', value: 'leader' },
-    { text: 'Offer emotional calibration training', value: 'support' },
-    { text: 'Paint flames on its chest', value: 'feral' },
-    { text: 'Ask if it dreams of rusting sheep', value: 'weird' },
+  { text: 'Assign it as logistics coordinator', value: 'libraryCommando' },
+  { text: 'Offer emotional calibration training', value: 'mutantHRManager' },
+  { text: 'Paint flames on its chest', value: 'duckPainter' },
+  { text: 'Ask if it dreams of rusting sheep', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -198,10 +200,10 @@ const allQuestions = [
     alt: "A crumbling hotel lobby with dusty chandeliers" 
   },
   options: [
-    { text: 'A keycard made from scrap metal', value: 'leader' },
-    { text: 'A bed stuffed with old newspapers', value: 'support' },
-    { text: 'A minibar full of mystery meat', value: 'feral' },
-    { text: 'A lamp that whispers bedtime stories', value: 'weird' },
+  { text: 'A keycard made from scrap metal', value: 'receiptGolem' },
+  { text: 'A bed stuffed with old newspapers', value: 'marshmallowGeneral' },
+  { text: 'A minibar full of mystery meat', value: 'gnocchiNomad' },
+  { text: 'A lamp that whispers bedtime stories', value: 'skeletonBarista' },
   ]
 },
 {
@@ -211,10 +213,10 @@ const allQuestions = [
     alt: "An ominous weapon glinting in the rubble" 
   },
   options: [
-    { text: 'A sword made of melted road signs', value: 'leader' },
-    { text: 'A crossbow that fires angry beetles', value: 'support' },
-    { text: 'A bat wrapped in barbed wire and rumors', value: 'feral' },
-    { text: 'A gun that shoots tiny holograms of itself', value: 'weird' },
+  { text: 'A sword made of melted road signs', value: 'doomDJ' },
+  { text: 'A crossbow that fires angry beetles', value: 'squirrelTamer' },
+  { text: 'A bat wrapped in barbed wire and rumors', value: 'glitterButcher' },
+  { text: 'A gun that shoots tiny holograms of itself', value: 'origamiDetective' },
   ]
 },
 {
@@ -224,10 +226,10 @@ const allQuestions = [
     alt: "A menacing pit trap surrounded by makeshift spikes" 
   },
   options: [
-    { text: 'Deliver a speech so epic it becomes legend', value: 'leader' },
-    { text: 'Make them clean your entire camp with a toothbrush', value: 'support' },
-    { text: 'Release a swarm of weaponized crows', value: 'feral' },
-    { text: 'Erase them from every photo… retroactively', value: 'weird' },
+  { text: 'Deliver a speech so epic it becomes legend', value: 'apocalypseConspiracyTheorist' },
+  { text: 'Make them clean your entire camp with a toothbrush', value: 'libraryCommando' },
+  { text: 'Release a swarm of weaponized crows', value: 'animalMime' },
+  { text: 'Erase them from every photo… retroactively', value: 'duckPainter' },
   ]
 },
 {
@@ -235,10 +237,10 @@ const allQuestions = [
   image: { uri: "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/boat.png" },
   alt: "Tactical belt with pouches",
   options: [
-    { text: 'Restore it into a seaworthy escape vessel', value: 'leader' },
-    { text: 'Turn it into a floating community hub', value: 'support' },
-    { text: 'Strip it for parts before anyone else can', value: 'feral' },
-    { text: 'Sail it inland somehow, just to confuse people', value: 'weird' },
+  { text: 'Restore it into a seaworthy escape vessel', value: 'travelAgentOfTerror' },
+  { text: 'Turn it into a floating community hub', value: 'mutantHRManager' },
+  { text: 'Strip it for parts before anyone else can', value: 'glitterButcher' },
+  { text: 'Sail it inland somehow, just to confuse people', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -246,10 +248,10 @@ const allQuestions = [
   image: { uri: "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/pool.png" },
   alt: "Derelict pool",
   options: [
-    { text: 'Fill it with clean water for the community', value: 'leader' },
-    { text: 'Grow crops in it using the deep basin', value: 'support' },
-    { text: 'Stock it with mutant fish for later snacking', value: 'feral' },
-    { text: 'Turn it into an ominous art installation', value: 'weird' },
+  { text: 'Fill it with clean water for the community', value: 'marshmallowGeneral' },
+  { text: 'Grow crops in it using the deep basin', value: 'kaleChampion' },
+  { text: 'Stock it with mutant fish for later snacking', value: 'gnocchiNomad' },
+  { text: 'Turn it into an ominous art installation', value: 'duckPainter' },
   ]
 },
 {
@@ -259,10 +261,10 @@ const allQuestions = [
     alt: "A rugged tactical belt with oddly glowing pouches" 
   },
   options: [
-    { text: 'Organize survival gear with military precision', value: 'leader' },
-    { text: 'Fill it with snacks for the whole squad', value: 'support' },
-    { text: 'Cram it full of stolen trinkets and bones', value: 'feral' },
-    { text: 'Discover one pouch contains a portal to nowhere', value: 'weird' },
+  { text: 'Organize survival gear with military precision', value: 'libraryCommando' },
+  { text: 'Fill it with snacks for the whole squad', value: 'marshmallowGeneral' },
+  { text: 'Cram it full of stolen trinkets and bones', value: 'glitterButcher' },
+  { text: 'Discover one pouch contains a portal to nowhere', value: 'origamiDetective' },
   ]
 },
 {
@@ -272,23 +274,23 @@ const allQuestions = [
     alt: "A scrappy animal companion ready for chaos" 
   },
   options: [
-    { text: 'A battle-hardened goat', value: 'leader' },
-    { text: 'A one-eyed therapy pigeon', value: 'support' },
-    { text: 'A hairless raccoon with trust issues', value: 'feral' },
-    { text: 'A telepathic lizard that speaks in riddles', value: 'weird' },
+  { text: 'A battle-hardened goat', value: 'hamsterWarlord' },
+  { text: 'A one-eyed therapy pigeon', value: 'mutantHRManager' },
+  { text: 'A hairless raccoon with trust issues', value: 'animalMime' },
+  { text: 'A telepathic lizard that speaks in riddles', value: 'radioactivePhilosopher' },
   ]
 },
 {
   question: "A STRANGER APPROACHES YOUR CAMP. YOU DECIDE TO:",
   image: { 
-    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/stranger.jpg",
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/stranger.png",
     alt: "A mysterious figure standing at the edge of your campfire light" 
   },
   options: [
-    { text: 'Offer them a seat and negotiate terms', value: 'leader' },
-    { text: 'Share a meal and learn their story', value: 'support' },
-    { text: 'Circle behind them and take their boots', value: 'feral' },
-    { text: 'Whisper to them in a language you just made up', value: 'weird' },
+  { text: 'Offer them a seat and negotiate terms', value: 'cockroachNegotiator' },
+  { text: 'Share a meal and learn their story', value: 'mutantHRManager' },
+  { text: 'Circle behind them and take their boots', value: 'glitterButcher' },
+  { text: 'Whisper to them in a language you just made up', value: 'duckPainter' },
   ]
 },
 {
@@ -298,10 +300,10 @@ const allQuestions = [
     alt: "A dilapidated college building with banners of odd symbols" 
   },
   options: [
-    { text: 'Survival Strategy and Bartering', value: 'leader' },
-    { text: 'Mutant Relations and Counseling', value: 'support' },
-    { text: 'Scavenging 101: Chaos Management', value: 'feral' },
-    { text: 'Cryptic Arts and Oddities', value: 'weird' },
+  { text: 'Survival Strategy and Bartering', value: 'apocalypseConspiracyTheorist' },
+  { text: 'Mutant Relations and Counseling', value: 'mutantHRManager' },
+  { text: 'Scavenging 101: Chaos Management', value: 'animalMime' },
+  { text: 'Cryptic Arts and Oddities', value: 'origamiDetective' },
   ]
 },
 {
@@ -311,10 +313,10 @@ const allQuestions = [
     alt: "Crumpled bills with bizarre illustrations and symbols" 
   },
   options: [
-    { text: 'A heroic figure with a duct-taped weapon', value: 'leader' },
-    { text: 'A pair of hands shaking over a campfire', value: 'support' },
-    { text: 'A snarling rat wearing a crown', value: 'feral' },
-    { text: 'An eye that seems to follow you everywhere', value: 'weird' },
+  { text: 'A heroic figure with a duct-taped weapon', value: 'doomDJ' },
+  { text: 'A pair of hands shaking over a campfire', value: 'cockroachNegotiator' },
+  { text: 'A snarling rat wearing a crown', value: 'squirrelTamer' },
+  { text: 'An eye that seems to follow you everywhere', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -324,10 +326,10 @@ const allQuestions = [
     alt: "A dusty dueling arena with strange improvised weapons" 
   },
   options: [
-    { text: 'A sharpened broom handle', value: 'leader' },
-    { text: 'An aggressively worded letter', value: 'support' },
-    { text: 'Two angry raccoons tied together', value: 'feral' },
-    { text: 'A spoon that whispers battle strategies', value: 'weird' },
+  { text: 'A sharpened broom handle', value: 'libraryCommando' },
+  { text: 'An aggressively worded letter', value: 'bureaucracyGhoul' },
+  { text: 'Two angry raccoons tied together', value: 'animalMime' },
+  { text: 'A spoon that whispers battle strategies', value: 'origamiDetective' },
   ]
 },
 {
@@ -337,10 +339,10 @@ const allQuestions = [
     alt: "A questionable apocalypse meal served on a rusty plate" 
   },
   options: [
-    { text: "Scavenge for expired granola bars", value: "feral" },
-    { text: "Hunt mutant squirrels", value: "leader" },
-    { text: "Barter socks for canned spaghetti", value: "support" },
-    { text: "Grow mushrooms in a toilet tank", value: "weird" }
+  { text: "Scavenge for expired granola bars", value: "gnocchiNomad" },
+  { text: "Hunt mutant squirrels", value: "squirrelTamer" },
+  { text: "Barter socks for canned spaghetti", value: "receiptGolem" },
+  { text: "Grow mushrooms in a toilet tank", value: "kaleChampion" }
   ]
 },
 {
@@ -350,10 +352,10 @@ const allQuestions = [
     alt: "Makeshift wooden barricade stacked with junkyard debris" 
   },
   options: [
-    { text: 'A horde of caffeinated squirrels', value: 'leader' },
-    { text: 'Door-to-door apocalypse salesmen', value: 'support' },
-    { text: 'A river of hot cheese', value: 'feral' },
-    { text: 'Time-traveling versions of yourself', value: 'weird' },
+  { text: 'A horde of caffeinated squirrels', value: 'squirrelTamer' },
+  { text: 'Door-to-door apocalypse salesmen', value: 'travelAgentOfTerror' },
+  { text: 'A river of hot cheese', value: 'glitterButcher' },
+  { text: 'Time-traveling versions of yourself', value: 'apocalypseConspiracyTheorist' },
   ]
 },
 {
@@ -363,10 +365,10 @@ const allQuestions = [
     alt: "Tattered gang flag waving in the radioactive wind" 
   },
   options: [
-    { text: 'A possum holding a sword and a grudge', value: 'leader' },
-    { text: 'Three raccoons in a trench coat flipping pancakes', value: 'support' },
-    { text: 'A screaming cactus wearing sunglasses', value: 'feral' },
-    { text: 'An eldritch sandwich that whispers your debts', value: 'weird' },
+  { text: 'A possum holding a sword and a grudge', value: 'hamsterWarlord' },
+  { text: 'Three raccoons in a trench coat flipping pancakes', value: 'animalMime' },
+  { text: 'A screaming cactus wearing sunglasses', value: 'duckPainter' },
+  { text: 'An eldritch sandwich that whispers your debts', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -376,10 +378,10 @@ const allQuestions = [
     alt: "A lone microphone glowing under a flickering neon light" 
   },
   options: [
-    { text: 'Screaming the Pokémon theme while being chased by a goose', value: 'leader' },
-    { text: 'Interpretive dance to whale sounds in full medieval armor', value: 'support' },
-    { text: 'Yodeling “Bohemian Rhapsody” while holding a suspicious ham', value: 'feral' },
-    { text: 'Whisper-rapping the Bee Movie script in a smoky jazz bar', value: 'weird' },
+  { text: 'Screaming the Pokémon theme while being chased by a goose', value: 'screamerScout' },
+  { text: 'Interpretive dance to whale sounds in full medieval armor', value: 'yodelMechanic' },
+  { text: 'Yodeling “Bohemian Rhapsody” while holding a suspicious ham', value: 'doomDJ' },
+  { text: 'Whisper-rapping the Bee Movie script in a smoky jazz bar', value: 'origamiDetective' },
   ]
 },
 {
@@ -388,10 +390,10 @@ image: {
   uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/light.png",
   alt: "Mysterious glowing light hovering in the night sky" },
   options: [
-  { text: 'Point at it and yell “same” until it goes away', value: 'leader' },
-  { text: 'Start selling tickets for the “End of the World Viewing Party”', value: 'support' },
-  { text: 'Challenge it to a rap battle… and lose', value: 'feral' },
-  { text: 'Offer it a sandwich as a peace treaty', value: 'weird' },
+  { text: 'Point at it and yell “same” until it goes away', value: 'doomDJ' },
+  { text: 'Start selling tickets for the “End of the World Viewing Party”', value: 'travelAgentOfTerror' },
+  { text: 'Challenge it to a rap battle… and lose', value: 'animalMime' },
+  { text: 'Offer it a sandwich as a peace treaty', value: 'radioactivePhilosopher' },
 ],
 },
 {
@@ -399,10 +401,10 @@ image: {
   image: { uri: "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/data.png" },
   alt: "Data drive",
   options: [
-    { text: 'Hundreds of cat photos', value: 'leader' },
-    { text: 'Recipes for different napalm flavors', value: 'support' },
-    { text: 'Complete gibberish', value: 'feral' },
-    { text: 'The script for every Jim Carrey movie', value: 'weird' },
+  { text: 'Hundreds of cat photos', value: 'receiptGolem' },
+  { text: 'Recipes for different napalm flavors', value: 'molotovMixologist' },
+  { text: 'Complete gibberish', value: 'apocalypseConspiracyTheorist' },
+  { text: 'The script for every Jim Carrey movie', value: 'libraryCommando' },
   ]
 },
 {
@@ -412,10 +414,10 @@ image: {
     alt: "A swirling portal shimmering with unknown energy" 
   },
   options: [
-    { text: 'Step through confidently', value: 'leader' },
-    { text: 'Set up a research tent', value: 'support' },
-    { text: 'Throw a rock in first', value: 'feral' },
-    { text: 'Whisper a warning to the void', value: 'weird' },
+  { text: 'Step through confidently', value: 'doomDJ' },
+  { text: 'Set up a research tent', value: 'origamiDetective' },
+  { text: 'Throw a rock in first', value: 'animalMime' },
+  { text: 'Whisper a warning to the void', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -425,10 +427,10 @@ image: {
     alt: "Rusty rides and eerie carnival lights" 
   },
   options: [
-    { text: 'Turn it into a fortress', value: 'leader' },
-    { text: 'Organize a scavenger hunt', value: 'support' },
-    { text: 'Ride everything at full speed', value: 'feral' },
-    { text: 'Meditate in the funhouse mirrors', value: 'weird' },
+  { text: 'Turn it into a fortress', value: 'travelAgentOfTerror' },
+  { text: 'Organize a scavenger hunt', value: 'libraryCommando' },
+  { text: 'Ride everything at full speed', value: 'hamsterWarlord' },
+  { text: 'Meditate in the funhouse mirrors', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -438,10 +440,10 @@ image: {
     alt: "A sentient toaster blinking like it has secrets" 
   },
   options: [
-    { text: 'Make it your tactical advisor', value: 'leader' },
-    { text: 'Teach it to make meals for the group', value: 'support' },
-    { text: 'Chase it around screaming', value: 'feral' },
-    { text: 'Ask it about the meaning of toast', value: 'weird' },
+  { text: 'Make it your tactical advisor', value: 'doomDJ' },
+  { text: 'Teach it to make meals for the group', value: 'marshmallowGeneral' },
+  { text: 'Chase it around screaming', value: 'screamerScout' },
+  { text: 'Ask it about the meaning of toast', value: 'skeletonBarista' },
   ]
 },
 {
@@ -451,10 +453,10 @@ image: {
     alt: "A mountain of mismatched, dusty socks" 
   },
   options: [
-    { text: 'Sort them by usefulness', value: 'leader' },
-    { text: 'Distribute them evenly to survivors', value: 'support' },
-    { text: 'Build a sock fort', value: 'feral' },
-    { text: 'Wear them all at once for enlightenment', value: 'weird' },
+  { text: 'Sort them by usefulness', value: 'receiptGolem' },
+  { text: 'Distribute them evenly to survivors', value: 'mutantHRManager' },
+  { text: 'Build a sock fort', value: 'glitterButcher' },
+  { text: 'Wear them all at once for enlightenment', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -464,10 +466,10 @@ image: {
     alt: "Thick fog swallowing the landscape" 
   },
   options: [
-    { text: 'Set up sentries and stay alert', value: 'leader' },
-    { text: 'Use it to cover a supply run', value: 'support' },
-    { text: 'Run screaming into it', value: 'feral' },
-    { text: 'Breathe deeply and commune with spirits', value: 'weird' },
+  { text: 'Set up sentries and stay alert', value: 'fogMechanic' },
+  { text: 'Use it to cover a supply run', value: 'travelAgentOfTerror' },
+  { text: 'Run screaming into it', value: 'screamerScout' },
+  { text: 'Breathe deeply and commune with spirits', value: 'trashOracle' },
   ]
 },
 {
@@ -477,10 +479,10 @@ image: {
     alt: "An odd instrument with glowing strings" 
   },
   options: [
-    { text: 'Lead a rally with it', value: 'leader' },
-    { text: 'Play calming tunes for the group', value: 'support' },
-    { text: 'Smash it loudly', value: 'feral' },
-    { text: 'Listen for cosmic messages', value: 'weird' },
+  { text: 'Lead a rally with it', value: 'doomDJ' },
+  { text: 'Play calming tunes for the group', value: 'cyborgCellist' },
+  { text: 'Smash it loudly', value: 'molotovMixologist' },
+  { text: 'Listen for cosmic messages', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -490,10 +492,10 @@ image: {
     alt: "A small drone hovering and scanning the area" 
   },
   options: [
-    { text: 'Hack it to serve your team', value: 'leader' },
-    { text: 'Follow it to discover resources', value: 'support' },
-    { text: 'Shoot it with a slingshot', value: 'feral' },
-    { text: 'Bow respectfully', value: 'weird' },
+  { text: 'Hack it to serve your team', value: 'apocalypseConspiracyTheorist' },
+  { text: 'Follow it to discover resources', value: 'origamiDetective' },
+  { text: 'Shoot it with a slingshot', value: 'animalMime' },
+  { text: 'Bow respectfully', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -503,10 +505,10 @@ image: {
     alt: "An old chest half-buried in sand" 
   },
   options: [
-    { text: 'Open it carefully and catalog contents', value: 'leader' },
-    { text: 'Share the loot with allies', value: 'support' },
-    { text: 'Kick it open violently', value: 'feral' },
-    { text: 'Whisper secrets before opening', value: 'weird' },
+  { text: 'Open it carefully and catalog contents', value: 'receiptGolem' },
+  { text: 'Share the loot with allies', value: 'mutantHRManager' },
+  { text: 'Kick it open violently', value: 'glitterButcher' },
+  { text: 'Whisper secrets before opening', value: 'trashOracle' },
   ]
 },
 {
@@ -516,10 +518,10 @@ image: {
     alt: "A hooded figure surrounded by floating code" 
   },
   options: [
-    { text: 'Recruit them for strategy', value: 'leader' },
-    { text: 'Learn their techniques', value: 'support' },
-    { text: 'Mess with their system', value: 'feral' },
-    { text: 'Ask cryptic questions', value: 'weird' },
+  { text: 'Recruit them for strategy', value: 'apocalypseConspiracyTheorist' },
+  { text: 'Learn their techniques', value: 'origamiDetective' },
+  { text: 'Mess with their system', value: 'animalMime' },
+  { text: 'Ask cryptic questions', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -529,10 +531,10 @@ image: {
     alt: "A small island hovering mysteriously above the ground" 
   },
   options: [
-    { text: 'Build a base atop it', value: 'leader' },
-    { text: 'Explore it for resources', value: 'support' },
-    { text: 'Jump off it recklessly', value: 'feral' },
-    { text: 'Meditate on its floating mystery', value: 'weird' },
+  { text: 'Build a base atop it', value: 'neonGravedigger' },
+  { text: 'Explore it for resources', value: 'travelAgentOfTerror' },
+  { text: 'Jump off it recklessly', value: 'hamsterWarlord' },
+  { text: 'Meditate on its floating mystery', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -542,10 +544,10 @@ image: {
     alt: "A neon rubber duck floating in a puddle" 
   },
   options: [
-    { text: 'Make it the team mascot', value: 'leader' },
-    { text: 'Use it as a morale booster', value: 'support' },
-    { text: 'Squish it repeatedly', value: 'feral' },
-    { text: 'Ask it for stock tips', value: 'weird' },
+  { text: 'Make it the team mascot', value: 'duckPainter' },
+  { text: 'Use it as a morale booster', value: 'mutantHRManager' },
+  { text: 'Squish it repeatedly', value: 'hamsterWarlord' },
+  { text: 'Ask it for stock tips', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -555,10 +557,10 @@ image: {
     alt: "A wobbling, translucent gelatinous creature" 
   },
   options: [
-    { text: 'Negotiate a treaty', value: 'leader' },
-    { text: 'Feed it spare snacks', value: 'support' },
-    { text: 'Punch it repeatedly', value: 'feral' },
-    { text: 'Dance with it to the music', value: 'weird' },
+  { text: 'Negotiate a treaty', value: 'cockroachNegotiator' },
+  { text: 'Feed it spare snacks', value: 'marshmallowGeneral' },
+  { text: 'Punch it repeatedly', value: 'molotovMixologist' },
+  { text: 'Dance with it to the music', value: 'doomDJ' },
   ]
 },
 {
@@ -568,10 +570,10 @@ image: {
     alt: "A tall hat glowing with arcane energy" 
   },
   options: [
-    { text: 'Wear it and lead', value: 'leader' },
-    { text: 'Use it to help friends', value: 'support' },
-    { text: 'Throw it into a fire', value: 'feral' },
-    { text: 'Ask it philosophical questions', value: 'weird' },
+  { text: 'Wear it and lead', value: 'neonGravedigger' },
+  { text: 'Use it to help friends', value: 'mutantHRManager' },
+  { text: 'Throw it into a fire', value: 'molotovMixologist' },
+  { text: 'Ask it philosophical questions', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -581,10 +583,10 @@ image: {
     alt: "Slices of glowing toast stacked in an odd pattern" 
   },
   options: [
-    { text: 'Distribute it fairly', value: 'leader' },
-    { text: 'Offer it to hungry survivors', value: 'support' },
-    { text: 'Eat it in one bite', value: 'feral' },
-    { text: 'Use it to predict the future', value: 'weird' },
+  { text: 'Distribute it fairly', value: 'receiptGolem' },
+  { text: 'Offer it to hungry survivors', value: 'marshmallowGeneral' },
+  { text: 'Eat it in one bite', value: 'gnocchiNomad' },
+  { text: 'Use it to predict the future', value: 'trashOracle' },
   ]
 },
 {
@@ -594,10 +596,10 @@ image: {
     alt: "A twisting tunnel made entirely of socks" 
   },
   options: [
-    { text: 'Map it for safe passage', value: 'leader' },
-    { text: 'Use it to smuggle supplies', value: 'support' },
-    { text: 'Roll through it screaming', value: 'feral' },
-    { text: 'Meditate inside it', value: 'weird' },
+  { text: 'Map it for safe passage', value: 'travelAgentOfTerror' },
+  { text: 'Use it to smuggle supplies', value: 'libraryCommando' },
+  { text: 'Roll through it screaming', value: 'screamerScout' },
+  { text: 'Meditate inside it', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -607,10 +609,10 @@ image: {
     alt: "A giant frowning butterfly perched on a rock" 
   },
   options: [
-    { text: 'Make it your adviser', value: 'leader' },
-    { text: 'Cheer it up with gifts', value: 'support' },
-    { text: 'Swat it angrily', value: 'feral' },
-    { text: 'Have a philosophical debate', value: 'weird' },
+  { text: 'Make it your adviser', value: 'cyborgCellist' },
+  { text: 'Cheer it up with gifts', value: 'mutantHRManager' },
+  { text: 'Swat it angrily', value: 'animalMime' },
+  { text: 'Have a philosophical debate', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -620,10 +622,10 @@ image: {
     alt: "A hovering ice cream cone with pleading eyes" 
   },
   options: [
-    { text: 'Rescue it carefully', value: 'leader' },
-    { text: 'Share it with friends', value: 'support' },
-    { text: 'Eat it immediately', value: 'feral' },
-    { text: 'Ask it about the universe', value: 'weird' },
+  { text: 'Rescue it carefully', value: 'lavaLifeguard' },
+  { text: 'Share it with friends', value: 'marshmallowGeneral' },
+  { text: 'Eat it immediately', value: 'gnocchiNomad' },
+  { text: 'Ask it about the universe', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -633,10 +635,10 @@ image: {
     alt: "A broom glowing faintly and hovering slightly" 
   },
   options: [
-    { text: 'Use it to lead operations', value: 'leader' },
-    { text: 'Clean the camp efficiently', value: 'support' },
-    { text: 'Swing it wildly', value: 'feral' },
-    { text: 'Ask it to tell stories', value: 'weird' },
+  { text: 'Use it to lead operations', value: 'libraryCommando' },
+  { text: 'Clean the camp efficiently', value: 'marshmallowGeneral' },
+  { text: 'Swing it wildly', value: 'molotovMixologist' },
+  { text: 'Ask it to tell stories', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -646,10 +648,10 @@ image: {
     alt: "A small rock with a mouth and tiny eyes" 
   },
   options: [
-    { text: 'Listen carefully', value: 'leader' },
-    { text: 'Take notes', value: 'support' },
-    { text: 'Ignore it and throw it', value: 'feral' },
-    { text: 'Ask it riddles back', value: 'weird' },
+  { text: 'Listen carefully', value: 'receiptGolem' },
+  { text: 'Take notes', value: 'libraryCommando' },
+  { text: 'Ignore it and throw it', value: 'animalMime' },
+  { text: 'Ask it riddles back', value: 'radioactivePhilosopher' },
   ]
 },
 {
@@ -659,33 +661,265 @@ image: {
     alt: "A massive banana sliding down a hill" 
   },
   options: [
-    { text: 'Use it to create a trap', value: 'leader' },
-    { text: 'Share it with the squad', value: 'support' },
-    { text: 'Slip on it dramatically', value: 'feral' },
-    { text: 'Meditate while balancing on it', value: 'weird' },
+  { text: 'Use it to create a trap', value: 'cockroachNegotiator' },
+  { text: 'Share it with the squad', value: 'marshmallowGeneral' },
+  { text: 'Slip on it dramatically', value: 'hamsterWarlord' },
+  { text: 'Meditate while balancing on it', value: 'radioactivePhilosopher' },
   ]
 },
+{ 
+  question: "A UNICORN DEMANDS PAYMENT IN GLITTER. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/unicorn.png",
+    alt: "A unicorn glaring, its horn glowing like a credit card machine" 
+  },
+  options: [
+  { text: 'Offer your entire savings account of rainbows', value: 'glitterButcher' },
+  { text: 'Split the glitter bill with your party', value: 'mutantHRManager' },
+  { text: 'Eat the glitter before anyone can pay', value: 'gnocchiNomad' },
+  { text: 'Ask if the horn also accepts interpretive dance', value: 'duckPainter' },
+  ]
+},
+{ 
+  question: "BIGFOOT APPLIES FOR A JOB AS YOUR ROOMMATE. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/bigfoot.png",
+    alt: "Bigfoot holding a poorly written resume and a coffee mug" 
+  },
+  options: [
+  { text: 'Conduct a formal roommate interview', value: 'bureaucracyGhoul' },
+  { text: 'Help him polish his resume', value: 'mutantHRManager' },
+  { text: 'Challenge him to wrestle for the room', value: 'hamsterWarlord' },
+  { text: 'Ask if he has references from cryptids or clouds', value: 'apocalypseConspiracyTheorist' },
+  ]
+},
+{ 
+  question: "A CHUPACABRA OPENS A TACO TRUCK. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/chupacabra.png",
+    alt: "A chupacabra wearing an apron, handing out tacos suspiciously" 
+  },
+  options: [
+  { text: 'Help write a strict business plan', value: 'bureaucracyGhoul' },
+  { text: 'Pass out free samples to friends', value: 'marshmallowGeneral' },
+  { text: 'Bite the tacos before customers can order', value: 'gnocchiNomad' },
+  { text: 'Ask if the salsa is made of moonlight and goats', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "ZOMBIES INVITE YOU TO THEIR BOOK CLUB. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/zombies.png",
+    alt: "A group of zombies politely holding hardcover novels" 
+  },
+  options: [
+  { text: 'Lead the discussion on “Brains: A Memoir”', value: 'doomDJ' },
+  { text: 'Bring snacks that aren’t brains', value: 'marshmallowGeneral' },
+  { text: 'Eat the book before the meeting starts', value: 'animalMime' },
+  { text: 'Insist the only valid book is one written by worms', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "A VAMPIRE WANTS TO START A PODCAST. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/vampire.png",
+    alt: "A vampire adjusting a microphone, avoiding its reflection in the pop filter" 
+  },
+  options: [
+  { text: 'Offer to be the co-host and manage scheduling', value: 'doomDJ' },
+  { text: 'Handle the editing and moral support', value: 'mutantHRManager' },
+  { text: 'Interrupt every episode with blood-slurping ASMR', value: 'skeletonBarista' },
+  { text: 'Ask if the podcast only streams at midnight', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "NESSIE EMAILS YOU A LINK TO THEIR NEW MIXTAPE. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/nessie.png",
+    alt: "The Loch Ness monster wearing headphones, bobbing its head to beats" 
+  },
+  options: [
+  { text: 'Promote the mixtape aggressively online', value: 'doomDJ' },
+  { text: 'Add it to a shared playlist for friends', value: 'mutantHRManager' },
+  { text: 'Slam-dance into the nearest lake', value: 'hamsterWarlord' },
+  { text: 'Ask if the beats were recorded under the moon with kelp', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "GODZILLA APPEARS WITH A CLIPBOARD AND A SURVEY. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/godzilla.png",
+    alt: "Godzilla politely adjusting glasses while holding a clipboard" 
+  },
+  options: [
+  { text: 'Lead the survey as if you are the mayor of ruins', value: 'bureaucracyGhoul' },
+  { text: 'Help tally up skyscraper satisfaction scores', value: 'receiptGolem' },
+  { text: 'Eat the clipboard before any questions are asked', value: 'animalMime' },
+  { text: 'Ask if destruction counts as “strongly agree” or “neutral”', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "A TRIBE OF TALKING CHEESE DEMANDS REPRESENTATION. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/cheese.png",
+    alt: "A group of cheddar and brie wearing ceremonial robes, chanting" 
+  },
+  options: [
+  { text: 'Organize their cheese council with parliamentary rules', value: 'bureaucracyGhoul' },
+  { text: 'Translate their dairy hymns for outsiders', value: 'mutantHRManager' },
+  { text: 'Gnaw on the elders during negotiations', value: 'gnocchiNomad' },
+  { text: 'Ask if lactose intolerance is considered heresy', value: 'radioactivePhilosopher' },
+  ]
+},
+{ 
+  question: "IN A CEMETERY, A GHOST OFFERS YOU A BROKEN LAWN CHAIR. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/ghost.png",
+    alt: "A translucent ghost politely holding out a cracked lawn chair among gravestones" 
+  },
+  options: [
+  { text: 'Sit with solemn dignity and declare yourself king of the graveyard', value: 'neonGravedigger' },
+  { text: 'Invite the ghost to sit while you applaud respectfully', value: 'mutantHRManager' },
+  { text: 'Break the chair further and start a midnight wrestling match with shadows', value: 'hamsterWarlord' },
+  { text: 'Ask the chair if it remembers its tree-life before death', value: 'radioactivePhilosopher' },
+  ]
+},
+{
+  question: "IN THE DESERT, YOU FIND A TREASURE CHEST HALF-BURIED IN DUNES. IT HUMS A COUNTRY SONG. YOU:",
+  image: { 
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/desertchest.png",
+    alt: "A weathered treasure chest jutting from golden sand under a blazing sun, faint musical notes rising from it" 
+  },
+  options: [
+  { text: 'Climb atop it and proclaim yourself Sheriff of Sand Dollars', value: 'travelAgentOfTerror' },
+  { text: 'Fan the chest with palm fronds and whisper “you’re doing great, buddy”', value: 'marshmallowGeneral' },
+  { text: 'Punch the dunes until a scorpion agrees to fight in your honor', value: 'animalMime' },
+  { text: 'Ask the chest whether it prefers tumbleweeds or tax audits', value: 'apocalypseConspiracyTheorist' },
+  ]
+},
+
   // Add more questions in same format...
 ];
-
 const roles = {
   weird: {
     description: 'Trash Oracle - Reads the future in garbage. Mysterious and oddly accurate.',
-    image: require('./assets/images/Oracle.png'),
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/Oracle.png" },
   },
   leader: {
     description: 'Regional Doom Coordinator - Schedules disaster like it’s a corporate retreat.',
-    image: require('./assets/images/dj.png'),
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/dj.png" },
   },
   support: {
     description: 'Mutant HR Manager - Resolves conflict with tasers and empathy.',
-    image: require('./assets/images/MutantHR.png'),
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/MutantHR.png" },
   },
   feral: {
     description: 'Screamer Scout - Screams first, thinks later. Often right.',
-    image: require('./assets/images/dancer.png'),
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/dancer.png" },
   },
+  bureaucracyGhoul: {
+    description: "Bureaucracy Ghoul - Feeds on paperwork and thrives in long lines. Stamps documents with sinister precision.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/bureaucracyGhoul.png" },
+  },
+  kaleChampion: {
+    description: "Kale Champion - Armored in leafy resilience. Bitter, righteous, and impossible to wilt.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/kaleChampion.png" },
+  },
+  fogMechanic: {
+    description: "Fog Mechanic - Fixes broken mists and tunes eerie atmospheres. Works only at dawn.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/fogMechanic.png" },
+  },
+  skeletonBarista: {
+    description: "Skeleton Barista - Serves bone-dry lattes. Milk froth screams faintly.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/skeletonBarista.png" },
+  },
+  neonGravedigger: {
+    description: "Neon Gravedigger - Digs glowing graves that double as nightclubs. Morbid, yet festive.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/neonGravedigger.png" },
+  },
+  hamsterWarlord: {
+    description: "Hamster Warlord - Commands an army of squeaky, wheel loving rodents. Tiny, fluffy, unstoppable.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/hamsterWarlord.png" },
+  },
+  balloonNecromancer: {
+    description: "Balloon Necromancer – Summons the dead with squeaky inflatables and helium whispers.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/balloonNecromancer.png" },
+  },
+  cockroachNegotiator: {
+    description: "Cockroach Negotiator – Brokers peace treaties with indestructible insects over crumbs of power.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/cockroachNegotiator.png" },
+  },
+  cyborgCellist: {
+    description: "Cyborg Cellist – Performs haunting symphonies on titanium strings while sparks fly from the bow.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/cyborgCellist.png" },
+  },
+  libraryCommando: {
+    description: "Library Commando – Shushes enemies with militant silence and overdue-book fines.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/libraryCommando.png" },
+  },
+  doomDJ: {
+    description: "Doom DJ – Spins tracks that summon thunder, collapse buildings, and start dance-offs with the void.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/doomDJ.png" },
+  },
+  duckPainter: {
+    description: "Duck Painter – Covers the wasteland in murals of ducks that seem to stare back a little too knowingly.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/duckPainter.png" },
+  },
+  glitterButcher: {
+    description: "Glitter Butcher – Leaves every battlefield sparkling, fabulous, and disturbingly sticky.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/glitterButcher.png" },
+  },
+  gnocchiNomad: {
+    description: "Gnocchi Nomad – Wanders deserts with pockets full of potato pasta, feeding the hungry and confusing the rest.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/gnocchiNomad.png" },
+  },
+  lavaLifeguard: {
+    description: "Lava Lifeguard – Blows a whistle at volcanoes and dives into magma to save screaming skeletons.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/lavaLifeguard.png" },
+  },
+  marshmallowGeneral: {
+    description: "Marshmallow General – Commands gooey troops that roast enemies alive, slowly and deliciously.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/marshmallowGeneral.png" },
+  },
+  animalMime: {
+    description: "Animal Mime – Mimics beasts so convincingly that predators applaud, then eat the audience.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/animalMime.png" },
+  },
+  molotovMixologist: {
+    description: "Molotov Mixologist – Crafts cocktails that light up the night, garnished with chaos and a twist of lime.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/molotovMixologist.png" },
+  },
+  origamiDetective: {
+    description: "Origami Detective – Folds clues into cranes, swans, and confessions that solve themselves.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/origamiDetective.png" },
+  },
+  radioactivePhilosopher: {
+    description: "Radioactive Philosopher – Glows in the dark while pondering whether fallout has meaning.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/radioactivePhilosopher.png" },
+  },
+  receiptGolem: {
+    description: "Receipt Golem – Born from endless shopping slips, remembers every purchase, judges all of them.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/receiptGolem.png" },
+  },
+  squirrelTamer: {
+    description: "Squirrel Tamer – Bends armies of twitchy rodents to their will with acorn diplomacy.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/squirrelTamer.png" },
+  },
+  apocalypseConspiracyTheorist: {
+    description: "Apocalypse Conspiracy Theorist – Knew it all along, explains it with 48 corkboards and zero evidence.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/apocalypseConspiracyTheorist.png" },
+  },
+  yodelMechanic: {
+    description: "Yodel Mechanic – Fixes broken engines by singing so loud pistons weep oil in gratitude.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/yodelMechanic.png" },
+  },
+  travelAgentOfTerror: {
+    description: "Travel Agent of Terror – Books scenic vacations to sinkholes, haunted malls, and endless bureaucracy lines.",
+    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/travelAgentOfTerror.png" },
+  },
+
 };
+
 // =======================
 // MAIN APP COMPONENT
 // =======================
@@ -698,10 +932,345 @@ export default function App() {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [exitWarningVisible, setExitWarningVisible] = useState(false);
+  const scrollY = useRef(new Animated.Value(400)).current; // start lower
+  const [quizSound, setQuizSound] = useState(null);
+  const [creditsSound, setCreditsSound] = useState(null);
+  const [titleSound, setTitleSound] = useState(null); // title/menu music
+  const [secretSound, setSecretSound] = useState(null);
+  const [secretResultSound, setSecretResultSound] = useState(null);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [secretClicks, setSecretClicks] = useState(0);
+  const [secretUnlocked, setSecretUnlocked] = useState(false);
+  const [secretBoxTaps, setSecretBoxTaps] = useState([false, false, false, false]);
+  const [secretStage, setSecretStage] = useState(1); // 1 = first page, 2 = second page
+  const [isMuted, setIsMuted] = useState(false);
+
+const previousModeRef = useRef(null);
+
+useEffect(() => {
+  if (mode === "basic" || mode === "advanced" || mode === "full") {
+    previousModeRef.current = mode; // store last quiz mode
+  }
+}, [mode]);
+
+  // --- music pause/resume on mute ---
+const toggleMute = async () => {
+  const newMuted = !isMuted; // compute new state
+  setIsMuted(newMuted);
+
+  const allSounds = [titleSound, quizSound, creditsSound];
+  for (let s of allSounds) {
+    if (!s) continue;
+
+    const status = await s.getStatusAsync();
+    if (!status.isLoaded) continue;
+
+    if (newMuted) {
+      // pause if muted
+      if (status.isPlaying) await s.pauseAsync();
+    } else {
+      // resume if unmuted
+      if (!status.isPlaying) await s.playAsync();
+    }
+  }
+};
+
+  // --- universal mute button ---
+const MuteButton = () => (
+  <TouchableOpacity
+    onPress={toggleMute}
+    style={{
+      position: "absolute",
+      bottom: 20,
+      left: 20,
+      width: 60,
+      height: 50,
+      zIndex: 1000,
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {/* Retro speaker triangle pointing left */}
+    <View style={{
+      width: 0,
+      height: 0,
+      borderTopWidth: 12,
+      borderBottomWidth: 12,
+      borderRightWidth: 20,
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
+      borderRightColor: "#00FF00",
+      position: "absolute",
+      left: 10,
+    }} />
+
+    {/* Sound waves (centered vertically on triangle, with slight gap) */}
+    {!isMuted && (
+      <>
+        <View style={{
+          width: 2,
+          height: 6,
+          backgroundColor: "#00FF00",
+          position: "absolute",
+          left: 34,
+          top: 22, // shifted down
+        }} />
+        <View style={{
+          width: 2,
+          height: 10,
+          backgroundColor: "#00FF00",
+          position: "absolute",
+          left: 40,
+          top: 20,
+        }} />
+        <View style={{
+          width: 2,
+          height: 14,
+          backgroundColor: "#00FF00",
+          position: "absolute",
+          left: 46,
+          top: 18,
+        }} />
+      </>
+    )}
+
+    {/* Two red lines forming an X when muted */}
+    {isMuted && (
+      <>
+        <View style={{
+          width: 35,
+          height: 2,
+          backgroundColor: "#FF0000",
+          position: "absolute",
+          transform: [{ rotate: "45deg" }],
+        }} />
+        <View style={{
+          width: 35,
+          height: 2,
+          backgroundColor: "#FF0000",
+          position: "absolute",
+          transform: [{ rotate: "-45deg" }],
+        }} />
+      </>
+    )}
+  </TouchableOpacity>
+);
+
+
+
+// =======================
+// SECRET PROGRESS BAR COMPONENT
+// =======================
+const SecretProgressBar = ({ currentSecretIndex, onComplete }) => {
+  const [progress, setProgress] = useState(0);
+
+  const handlePress = () => {
+    // Only clickable on the 3rd secret question (index 2)
+    if (currentSecretIndex !== 2) return;
+    if (progress < 5) {
+      const newProgress = progress + 1;
+      setProgress(newProgress);
+      if (newProgress === 5) {
+        onComplete(); // trigger secret win
+      }
+    }
+  };
+
+  return (
+    <TouchableOpacity
+      activeOpacity={currentSecretIndex === 2 ? 0.8 : 1}
+      onPress={handlePress}
+      style={styles.secretProgressContainer}
+    >
+      <View style={styles.secretProgressBackground}>
+        <View style={[styles.secretProgressFill, { flex: progress }]} />
+        <View style={{ flex: 5 - progress }} />
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 
 const confirmQuit = () => {
   setExitWarningVisible(true);
 };
+
+// play title/menu music
+async function playTitleMusic() {
+  if (titleSound) {
+    // Already exists, just resume if paused
+    const status = await titleSound.getStatusAsync();
+    if (!status.isPlaying) {
+      await titleSound.playAsync();
+    }
+    return;
+  }
+
+  const { sound } = await Audio.Sound.createAsync(
+    require('./assets/music/TLPR.mp3'),
+    { isLooping: true, shouldPlay: true }
+  );
+  setTitleSound(sound);
+  await sound.playAsync();
+}
+
+// helper: play quiz music
+async function playQuizMusic() {
+  const { sound } = await Audio.Sound.createAsync(
+    require('./assets/music/LPME.mp3'),
+    { isLooping: true, shouldPlay: true }
+  );
+  setQuizSound(sound);
+  await sound.playAsync();
+}
+
+// helper: play credits music
+async function playCreditsMusic() {
+  const { sound } = await Audio.Sound.createAsync(
+    require('./assets/music/TLCKMD.mp3'), // 👈 add your credits song here
+    { isLooping: true, shouldPlay: true }
+  );
+  setCreditsSound(sound);
+  await sound.playAsync();
+}
+
+async function playSecretMusic() {
+  const { sound } = await Audio.Sound.createAsync(
+    require("./assets/music/TLTV.mp3"), // replace with your actual file
+    { isLooping: true, shouldPlay: true }
+  );
+  setSecretSound(sound);
+  await sound.playAsync();
+}
+// helper: play secret result music
+async function playSecretResultMusic() {
+  const { sound } = await Audio.Sound.createAsync(
+    require('./assets/music/TLA.mp3'), // 👈 put your file in /assets/music
+    { isLooping: true, shouldPlay: true }
+  );
+  setSecretResultSound(sound);
+  await sound.playAsync();
+}
+
+// clean up function
+async function stopAllMusic() {
+  if (titleSound) {
+    await titleSound.stopAsync();
+    await titleSound.unloadAsync();
+    setTitleSound(null);
+  }
+  if (quizSound) {
+    await quizSound.stopAsync();
+    await quizSound.unloadAsync();
+    setQuizSound(null);
+  }
+  if (creditsSound) {
+    await creditsSound.stopAsync();
+    await creditsSound.unloadAsync();
+    setCreditsSound(null);
+  }
+  if (secretSound) {
+    await secretSound.stopAsync();
+    await secretSound.unloadAsync();
+    setSecretSound(null);
+  }
+  if (secretResultSound) {
+    await secretResultSound.stopAsync();
+    await secretResultSound.unloadAsync();
+    setSecretResultSound(null);
+  }
+}
+
+// music control effect
+useEffect(() => {
+  let isMounted = true;
+
+  const handleMusic = async () => {
+    if (!isMounted) return;
+
+    // Decide what music should play
+    let desiredTrack = null;
+    if (mode === "basic" || mode === "advanced" || mode === "full") {
+      desiredTrack = "quiz";
+    } else if (mode === "credits") {
+      desiredTrack = "credits";
+    } else if (mode === "secret" && secretStage < 4) {
+      desiredTrack = "secret"; // secret levels 1–3
+    } else if (mode === "secret" && secretStage === 4) {
+      desiredTrack = "secretResult"; // secret result
+    } else if (mode === null) {
+      desiredTrack = "title";
+    }
+
+    // Stop anything that is playing but isn’t desired
+    if (desiredTrack !== "title" && titleSound) {
+      await titleSound.stopAsync();
+      await titleSound.unloadAsync();
+      setTitleSound(null);
+    }
+    if (desiredTrack !== "quiz" && quizSound) {
+      await quizSound.stopAsync();
+      await quizSound.unloadAsync();
+      setQuizSound(null);
+    }
+    if (desiredTrack !== "credits" && creditsSound) {
+      await creditsSound.stopAsync();
+      await creditsSound.unloadAsync();
+      setCreditsSound(null);
+    }
+    if (desiredTrack !== "secret" && secretSound) {
+      await secretSound.stopAsync();
+      await secretSound.unloadAsync();
+      setSecretSound(null);
+    }
+    if (desiredTrack !== "secretResult" && secretResultSound) {
+      await secretResultSound.stopAsync();
+      await secretResultSound.unloadAsync();
+      setSecretResultSound(null);
+    }
+
+    // Start the desired track if not muted
+    if (isMuted) return; // <--- skip starting music if muted
+
+    if (desiredTrack === "title" && !titleSound) await playTitleMusic();
+    else if (desiredTrack === "quiz" && !quizSound) await playQuizMusic();
+    else if (desiredTrack === "credits" && !creditsSound) await playCreditsMusic();
+    else if (desiredTrack === "secret" && !secretSound) await playSecretMusic();
+    else if (desiredTrack === "secretResult" && !secretResultSound) await playSecretResultMusic();
+  };
+
+  handleMusic();
+
+  return () => {
+    isMounted = false;
+  };
+}, [mode, isMuted, secretStage]);
+
+// Credit Effects
+useEffect(() => {
+  if (mode === "credits" && contentHeight > 0) {
+    const screenHeight = Dimensions.get("window").height;
+
+    // Start just below the bottom edge
+    scrollY.setValue(screenHeight - contentHeight);
+
+    // total distance to travel (from bottom of screen to fully off top)
+    const distance = contentHeight + screenHeight;
+
+    // desired speed in pixels per second
+    const speed = 50; // 👈 adjust this value to make it faster/slower
+
+    // duration in ms = distance / speed * 1000
+    const duration = (distance / speed) * 1000;
+
+    Animated.timing(scrollY, {
+      toValue: -contentHeight,
+      duration: duration,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+  }
+}, [mode, contentHeight]);
 
   useEffect(() => {
     if (mode) {
@@ -710,17 +1279,18 @@ const confirmQuit = () => {
     }
   }, [mode]);
 
-  const getRandomQuestions = (num) => {
-    const copy = [...allQuestions];
-    while (copy.length < num) {
-      copy.push(...allQuestions);
-    }
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy.slice(0, num);
-  };
+const getRandomQuestions = (num) => {
+  const copy = [...allQuestions];
+
+  // Fisher–Yates shuffle
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  // Only take as many as needed
+  return copy.slice(0, num);
+};
 
   const handleAnswer = (value) => {
     const newAnswers = [...answers, value];
@@ -756,6 +1326,47 @@ const confirmQuit = () => {
     return <TitleScreen onStart={() => setIsTitleVisible(false)} />;
   }
 
+// ===== Credits Screen =====
+if (mode === "credits") {
+  return (
+    <View style={styles.fullScreenContainer}>
+      <Text style={styles.header}>CREDITS</Text>
+
+      <View style={{ overflow: "hidden", height: "80%", width: "100%" }}>
+        <Animated.View
+          style={{
+            transform: [{ translateY: scrollY }],
+          }}
+        >
+          <View
+            onLayout={(e) => setContentHeight(e.nativeEvent.layout.height)}
+            style={{ margin: 0, padding: 0 }} // remove extra spacing
+          >
+            <Text style={styles.creditsText}>
+              Developed by: You{"\n"}
+              {"\n"}Art: Your Team{"\n"}
+              {"\n"}Special Thanks: Players like you{"\n"}
+              {"\n"}And anyone else you want to list...
+            </Text>
+          </View>
+        </Animated.View>
+      </View>
+
+      {/* Back button */}
+      <TouchableOpacity
+        style={styles.button} // same green retro style as other buttons
+        onPress={() => setMode(null)} // go back to mode select
+      >
+        <Text style={styles.buttonText}>Back</Text>
+      </TouchableOpacity>
+
+    {/* --- Universal Mute Button --- */}
+    <MuteButton />
+
+    </View>
+  );
+}
+
   // ===== Mode Selection =====
   if (!mode) {
     return (
@@ -764,6 +1375,11 @@ const confirmQuit = () => {
         <TouchableOpacity style={styles.button} onPress={() => setMode('basic')}><Text style={styles.buttonText}>BASIC (10 Qs)</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => setMode('advanced')}><Text style={styles.buttonText}>ADVANCED (20 Qs)</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => setMode('full')}><Text style={styles.buttonText}>FULL EVALUATION (30 Qs)</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.creditsButton} onPress={() => setMode("credits")}><Text style={styles.buttonText}>Credits</Text></TouchableOpacity>
+
+    {/* --- Universal Mute Button --- */}
+    <MuteButton />
+
       </View>
     );
   }
@@ -780,6 +1396,268 @@ const confirmQuit = () => {
       </ScrollView>
     );
   }
+  
+// ===== Secret Screen (Stage 1) =====
+if (mode === "secret" && secretStage === 1) {
+  const handleBoxPress = (index) => {
+    const next = [...secretBoxTaps];
+    next[index] = true;
+    setSecretBoxTaps(next);
+    if (next.every(Boolean)) setSecretStage(2);
+  };
+
+  const handleSecretAnswer = (value) => {
+    const newAnswers = [...answers, value];
+    setAnswers(newAnswers);
+
+    if (currentQuestion + 1 < quizQuestions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+      setMode(previousModeRef.current);
+    } else {
+      setShowResult(true);
+      setMode(previousModeRef.current);
+    }
+  };
+
+  // Instead of returning here, render inside main component JSX
+  return (
+    <View style={styles.fullScreenContainer}>
+      <Text style={styles.header}>THE AIR GOES QUIET. WHAT DO YOU DO?</Text>
+      <Image
+        source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/thedoor.png" }}
+        style={styles.image}
+      />
+      {[
+        { text: "Hold your breath and wait", value: "leader" },
+        { text: "Signal your crew to regroup", value: "support" },
+        { text: "Sprint toward the sound", value: "feral" },
+        { text: "Hum back at the horizon", value: "weird" },
+      ].map((opt, i) => (
+        <TouchableOpacity
+          key={i}
+          style={styles.button}
+          onPress={() => handleSecretAnswer(opt.value)}
+        >
+          <Text style={styles.buttonText}>{opt.text}</Text>
+        </TouchableOpacity>
+      ))}
+
+      {/* Invisible corner “decor” boxes */}
+      <View pointerEvents="box-none" style={styles.secretOverlay}>
+        {[0, 1, 2, 3].map((i) => (
+          <TouchableOpacity
+            key={i}
+            onPress={() => handleBoxPress(i)}
+            style={[
+              styles.cornerBox,
+              i === 0 && styles.tl,
+              i === 1 && styles.tr,
+              i === 2 && styles.bl,
+              i === 3 && styles.br,
+              secretBoxTaps[i] && styles.cornerBoxActive,
+            ]}
+          />
+        ))}
+      </View>
+
+      {/* SECRET PROGRESS BAR (static in Stage 1) */}
+      <SecretProgressBar currentSecretIndex={-1} onComplete={() => {}} />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setMode(previousModeRef.current)}
+      >
+        <Text style={styles.buttonText}>QUIT</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+// ===== Secret Screen (Stage 2) =====
+if (mode === "secret" && secretStage === 2) {
+  const handleSecretAnswer = (value) => {
+    const newAnswers = [...answers, value];
+    setAnswers(newAnswers);
+
+    if (currentQuestion + 1 < quizQuestions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+      setMode(previousModeRef.current);
+    } else {
+      setShowResult(true);
+      setMode(previousModeRef.current);
+    }
+  };
+
+  return (
+    <View style={styles.fullScreenContainer}>
+      <Text style={styles.header}>THE HORIZON SHIFTS. WHAT'S YOUR MOVE?</Text>
+      <Image
+        source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/secretroom.png" }}
+        style={styles.image}
+      />
+
+      {[
+        { text: "Step cautiously forward", value: "leader" },
+        { text: "Observe silently", value: "support" },
+        { text: "Run toward the light", value: "feral" },
+        { text: "Call out a strange sound", value: "weird" },
+      ].map((opt, i) => (
+        <TouchableOpacity
+          key={i}
+          style={styles.button}
+          onPress={() => handleSecretAnswer(opt.value)}
+        >
+          <Text style={styles.buttonText}>{opt.text}</Text>
+        </TouchableOpacity>
+      ))}
+
+      {/* Corner aesthetic boxes */}
+      <View pointerEvents="box-none" style={styles.secretOverlay}>
+        {[0, 1, 2, 3].map((i) => (
+          <View
+            key={i}
+            style={[
+              styles.cornerBox,
+              i === 0 && styles.tl,
+              i === 1 && styles.tr,
+              i === 2 && styles.bl,
+              i === 3 && styles.br,
+            ]}
+          />
+        ))}
+      </View>
+
+      {/* Secret progress bar (static) */}
+      <SecretProgressBar currentSecretIndex={-1} onComplete={() => {}} />
+
+      {/* "Leave" button advances to secretStage 3 */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setSecretStage(3)}
+      >
+        <Text style={styles.buttonText}>Leave</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+// ===== Secret Screen (Stage 3) =====
+if (mode === "secret" && secretStage === 3) {
+  const handleSecretAnswer = (value) => {
+    const newAnswers = [...answers, value];
+    setAnswers(newAnswers);
+
+    if (currentQuestion + 1 < quizQuestions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+      setMode(previousModeRef.current);
+    } else {
+      setShowResult(true);
+      setMode(previousModeRef.current);
+    }
+  };
+
+  const handleProgressComplete = () => {
+    // Show secret final results page
+    setSecretStage(4); // stage 4 = secret results page
+  };
+
+  return (
+    <View style={styles.fullScreenContainer}>
+      <Text style={styles.header}>A STRANGE ENERGY SURROUNDS YOU. WHAT DO YOU DO?</Text>
+      <Image
+        source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/agents.png" }}
+        style={styles.image}
+      />
+
+      {[
+        { text: "Step boldly forward", value: "leader" },
+        { text: "Wait and watch", value: "support" },
+        { text: "Leap toward the source", value: "feral" },
+        { text: "Whisper a strange chant", value: "weird" },
+      ].map((opt, i) => (
+        <TouchableOpacity
+          key={i}
+          style={styles.button}
+          onPress={() => handleSecretAnswer(opt.value)}
+        >
+          <Text style={styles.buttonText}>{opt.text}</Text>
+        </TouchableOpacity>
+      ))}
+
+      {/* Corner aesthetic boxes */}
+      <View pointerEvents="box-none" style={styles.secretOverlay}>
+        {[0, 1, 2, 3].map((i) => (
+          <TouchableOpacity
+            key={i}
+            onPress={() => {}}
+            style={[
+              styles.cornerBox,
+              i === 0 && styles.tl,
+              i === 1 && styles.tr,
+              i === 2 && styles.bl,
+              i === 3 && styles.br,
+            ]}
+          />
+        ))}
+      </View>
+
+      {/* Secret progress bar (interactive) */}
+      <SecretProgressBar currentSecretIndex={2} onComplete={handleProgressComplete} />
+
+      {/* Normal "Quit" button */}
+      <TouchableOpacity style={styles.button} onPress={() => setMode(previousModeRef.current)}>
+        <Text style={styles.buttonText}>Quit</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+// ===== Secret Screen (Stage 4 - Final Results) =====
+if (mode === "secret" && secretStage === 4) {
+  return (
+    <View style={styles.fullScreenContainer}>
+      <Text style={styles.header}>🏆 YOU BEAT MY APP 🏆</Text>
+      <Image
+        source={{
+          uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/utopia.png",
+        }}
+        style={styles.image}
+      />
+      <Text style={styles.creditsText}>
+        Against all odds, you found the hidden path and conquered it.
+      </Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          setMode(null);    // back to mode select
+          setSecretStage(1);    // reset secret stages
+          setSecretBoxTaps([false, false, false, false]);
+          setSecretProgress(0); // reset progress bar
+          setCurrentQuestion(0);
+          setAnswers([]);
+          setShowResult(false);
+          setProgress(0);
+        }}
+      >
+        <Text style={styles.buttonText}>BACK TO QUIZ</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+  // ===== Mode Selection =====
+  if (!mode) {
+    return (
+      <View style={styles.fullScreenContainer}>
+        <Text style={styles.header}>CHOOSE YOUR APOCALYPSE QUIZ MODE</Text>
+        <TouchableOpacity style={styles.button} onPress={() => setMode('basic')}><Text style={styles.buttonText}>BASIC (10 Qs)</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => setMode('advanced')}><Text style={styles.buttonText}>ADVANCED (20 Qs)</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => setMode('full')}><Text style={styles.buttonText}>FULL EVALUATION (30 Qs)</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.creditsButton} onPress={() => setMode("credits")}><Text style={styles.buttonText}>Credits</Text></TouchableOpacity>
+      </View>
+    );
+  }
 
   // ===== Quiz Screen =====
   const q = quizQuestions[currentQuestion] ?? {};
@@ -788,7 +1666,25 @@ const confirmQuit = () => {
 return (
   <ScrollView contentContainerStyle={styles.fullScreenContainer}>
     <Text style={styles.header}>{q.question}</Text>
-    {q.image && <Image source={q.image} style={styles.image} />}
+{q.image && (
+  <TouchableOpacity
+    onPress={() => {
+      const newCount = secretClicks + 1;
+      setSecretClicks(newCount);
+
+      if (newCount >= 5) {
+        setSecretUnlocked(true);
+        setMode("secret"); // 👈 trigger secret mode
+        setSecretClicks(0); // optional reset
+      }
+    }}
+  >
+    <Image 
+      source={{ uri: q.image.uri }} 
+      style={styles.image} 
+    />  
+    </TouchableOpacity>
+)}
     {q.options && q.options.map((opt, index) => (
       <TouchableOpacity key={index} style={styles.button} onPress={() => handleAnswer(opt.value)}>
         <Text style={styles.buttonText}>{opt.text}</Text>
@@ -814,7 +1710,7 @@ return (
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          <Text style={styles.modalText}>Are you sure you want to quit?</Text>
+          <Text style={styles.buttonText}>ARE YOU SURE YOU WANT TO QUIT AND LOSE ALL PROGRESS?</Text>
           <TouchableOpacity style={styles.button} onPress={() => setExitWarningVisible(false)}>
             <Text style={styles.buttonText}>CANCEL</Text>
           </TouchableOpacity>
@@ -831,6 +1727,10 @@ return (
         </View>
       </View>
     </Modal>
+
+        {/* --- Universal Mute Button --- */}
+    <MuteButton />
+
   </ScrollView>
 );
 }
@@ -972,4 +1872,81 @@ modalText: {
   marginBottom: 20,
   textAlign: "center",
 },
+scrollContainer: {
+  padding: 20,
+  alignItems: "center",
+},
+creditItem: {
+  fontSize: 16,
+  color: "white",
+  marginBottom: 10,
+  textAlign: "center",
+},
+creditsButton: {
+  position: "absolute",
+  bottom: 20,
+  right: 20,
+  paddingVertical: 8,
+  paddingHorizontal: 14,
+  backgroundColor: "#333", // dark background
+  borderRadius: 8,
+},
+creditsText: {
+  fontSize: 20,
+  color: '#00FF00', // 👈 neon green like your buttons
+  textAlign: 'center',
+  lineHeight: 28,
+    fontFamily: 'press-start',
+},
+secretOverlay: {
+  position: "absolute",
+  top: 0, left: 0, right: 0, bottom: 0,
+  zIndex: 10,
+},
+
+cornerBox: {
+  position: "absolute",
+  width: 26,
+  height: 26,
+  borderWidth: 2,
+  borderColor: "#00ff00",
+  borderRadius: 6,
+  backgroundColor: "transparent",   // looks like UI chrome
+  opacity: 0.65,                     // subtle so it feels decorative
+},
+
+cornerBoxActive: {
+  opacity: 1,
+  backgroundColor: "rgba(0,255,0,0.12)", // tiny feedback when tapped
+},
+
+tl: { top: 12, left: 12 },
+tr: { top: 12, right: 12 },
+bl: { bottom: 12, left: 12 },
+br: { bottom: 12, right: 12 },
+
+secretProgressContainer: {
+  marginVertical: 12,
+  width: '90%',
+  alignSelf: 'center',
+},
+secretProgressBackground: {
+  flexDirection: 'row',
+  height: 20,
+  backgroundColor: '#001133',
+  borderColor: '#33bbff',
+  borderWidth: 2,
+  borderRadius: 8,
+  shadowColor: '#33bbff',
+  shadowOpacity: 0.8,
+  shadowRadius: 8,
+  shadowOffset: { width: 0, height: 0 },
+  overflow: 'hidden',
+},
+secretProgressFill: {
+  backgroundColor: '#00ccff',
+  borderRightWidth: 1,
+  borderRightColor: '#003366',
+},
+
 });
