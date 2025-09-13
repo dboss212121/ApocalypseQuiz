@@ -735,7 +735,7 @@ image: {
 { 
   question: "NESSIE EMAILS YOU A LINK TO THEIR NEW MIXTAPE. YOU:",
   image: { 
-    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/nessie.png",
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/nessie.jpg",
     alt: "The Loch Ness monster wearing headphones, bobbing its head to beats" 
   },
   options: [
@@ -787,7 +787,7 @@ image: {
 {
   question: "IN THE DESERT, YOU FIND A TREASURE CHEST HALF-BURIED IN DUNES. IT HUMS A COUNTRY SONG. YOU:",
   image: { 
-    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/desertchest.png",
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/treasure.png",
     alt: "A weathered treasure chest jutting from golden sand under a blazing sun, faint musical notes rising from it" 
   },
   options: [
@@ -797,23 +797,32 @@ image: {
   { text: 'Ask the chest whether it prefers tumbleweeds or tax audits', value: 'apocalypseConspiracyTheorist' },
   ]
 },
+{
+  question: "IN THE RUINS OF A FORMER LASER TAG ARENA, YOU FIND A BOMB DISGUISED AS A VENDING MACHINE. IT WHISPERS YOUR CHILDHOOD NICKNAME. YOU:",
+  image: {
+    uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/defuse.png",
+    alt: "A dusty vending machine with exposed wires and blinking lights, surrounded by cracked neon walls and scorched arcade carpet"
+  },
+  options: [
+    { text: "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment", "value": "couponSaboteur" },
+    { text: "Challenge the bomb to a staring contest and lose dramatically", "value": "eyeballDiplomat" },
+    { text: "Recite the alphabet backwards while juggling expired batteries", "value": "entropyEntertainer" },
+    { text: "Offer it a friendship bracelet made of spaghetti and hope for detente", "value": "noodleNegotiator" }
+  ]
+}
 
   // Add more questions in same format...
 ];
 const roles = {
-  weird: {
+  trashOracle: {
     description: 'Trash Oracle - Reads the future in garbage. Mysterious and oddly accurate.',
     image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/Oracle.png" },
   },
-  leader: {
-    description: 'Regional Doom Coordinator - Schedules disaster like it’s a corporate retreat.',
-    image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/dj.png" },
-  },
-  support: {
+  mutantHRManager: {
     description: 'Mutant HR Manager - Resolves conflict with tasers and empathy.',
     image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/MutantHR.png" },
   },
-  feral: {
+  screamerScout: {
     description: 'Screamer Scout - Screams first, thinks later. Often right.',
     image: { uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/dancer.png" },
   },
@@ -1428,10 +1437,10 @@ if (mode === "secret" && secretStage === 1) {
         style={styles.image}
       />
       {[
-        { text: "Hold your breath and wait", value: "leader" },
-        { text: "Signal your crew to regroup", value: "support" },
-        { text: "Sprint toward the sound", value: "feral" },
-        { text: "Hum back at the horizon", value: "weird" },
+        { text: "Hold your breath and wait", value: "doomDJ" },
+        { text: "Signal your crew to regroup", value: "mutantHRManager" },
+        { text: "Sprint toward the sound", value: "screamerScout" },
+        { text: "Hum back at the horizon", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
           key={i}
@@ -1497,10 +1506,10 @@ if (mode === "secret" && secretStage === 2) {
       />
 
       {[
-        { text: "Step cautiously forward", value: "leader" },
-        { text: "Observe silently", value: "support" },
-        { text: "Run toward the light", value: "feral" },
-        { text: "Call out a strange sound", value: "weird" },
+        { text: "Step cautiously forward", value: "doomDJ" },
+        { text: "Observe silently", value: "mutantHRManager" },
+        { text: "Run toward the light", value: "screamerScout" },
+        { text: "Call out a strange sound", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
           key={i}
@@ -1570,10 +1579,10 @@ if (mode === "secret" && secretStage === 3) {
       />
 
       {[
-        { text: "Step boldly forward", value: "leader" },
-        { text: "Wait and watch", value: "support" },
-        { text: "Leap toward the source", value: "feral" },
-        { text: "Whisper a strange chant", value: "weird" },
+        { text: "Step boldly forward", value: "doomDJ" },
+        { text: "Wait and watch", value: "mutantHRManager" },
+        { text: "Leap toward the source", value: "screamerScout" },
+        { text: "Whisper a strange chant", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
           key={i}
