@@ -1338,10 +1338,10 @@ const getRandomQuestions = (num) => {
 // ===== Credits Screen =====
 if (mode === "credits") {
   return (
-    <View style={styles.fullScreenContainer}>
+    <ScrollView contentContainerStyle={[styles.fullScreenContainer, { position: 'relative' }]}>
       <Text style={styles.header}>CREDITS</Text>
 
-      <View style={{ overflow: "hidden", height: "80%", width: "100%" }}>
+      <View style={{ overflow: "hidden", width: "100%", maxWidth: 500, marginHorizontal: "auto", height: 300 }}>
         <Animated.View
           style={{
             transform: [{ translateY: scrollY }],
@@ -1349,7 +1349,7 @@ if (mode === "credits") {
         >
           <View
             onLayout={(e) => setContentHeight(e.nativeEvent.layout.height)}
-            style={{ margin: 0, padding: 0 }} // remove extra spacing
+            style={{ margin: 0, padding: 0 }}
           >
             <Text style={styles.creditsText}>
               Developed by: You{"\n"}
@@ -1361,18 +1361,15 @@ if (mode === "credits") {
         </Animated.View>
       </View>
 
-      {/* Back button */}
       <TouchableOpacity
-        style={styles.button} // same green retro style as other buttons
-        onPress={() => setMode(null)} // go back to mode select
+        style={styles.button}
+        onPress={() => setMode(null)}
       >
         <Text style={styles.buttonText}>Back</Text>
       </TouchableOpacity>
 
-    {/* --- Universal Mute Button --- */}
-    <MuteButton />
-
-    </View>
+      <MuteButton />
+    </ScrollView>
   );
 }
 
