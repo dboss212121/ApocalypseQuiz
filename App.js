@@ -1571,7 +1571,7 @@ if (mode === "secret" && secretStage === 3) {
   };
 
   return (
-    <View style={styles.fullScreenContainer}>
+    <ScrollView contentContainerStyle={styles.fullScreenContainer}>
       <Text style={styles.header}>A STRANGE ENERGY SURROUNDS YOU. WHAT DO YOU DO?</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/agents.png" }}
@@ -1617,14 +1617,14 @@ if (mode === "secret" && secretStage === 3) {
       <TouchableOpacity style={styles.button} onPress={() => setMode(previousModeRef.current)}>
         <Text style={styles.buttonText}>Quit</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
 // ===== Secret Screen (Stage 4 - Final Results) =====
 if (mode === "secret" && secretStage === 4) {
   return (
-    <View style={styles.fullScreenContainer}>
+    <ScrollView contentContainerStyle={styles.fullScreenContainer}>
       <Text style={styles.header}>🏆 YOU BEAT MY APP 🏆</Text>
       <Image
         source={{
@@ -1651,7 +1651,7 @@ if (mode === "secret" && secretStage === 4) {
       >
         <Text style={styles.buttonText}>BACK TO QUIZ</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -1907,9 +1907,15 @@ creditsText: {
   lineHeight: 28,
     fontFamily: 'press-start',
 },
+
 secretOverlay: {
-  position: "absolute",
-  top: 0, left: 0, right: 0, bottom: 0,
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  maxWidth: '100%',
+  maxHeight: '100%',
   zIndex: 10,
 },
 
