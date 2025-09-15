@@ -1430,7 +1430,7 @@ if (mode === "secret" && secretStage === 1) {
 
   // Instead of returning here, render inside main component JSX
   return (
-    <View style={styles.fullScreenContainer}>
+    <ScrollView contentContainerStyle={styles.fullScreenContainer}>
       <Text style={styles.header}>THE AIR GOES QUIET. WHAT DO YOU DO?</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/thedoor.png" }}
@@ -1478,7 +1478,7 @@ if (mode === "secret" && secretStage === 1) {
       >
         <Text style={styles.buttonText}>QUIT</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
