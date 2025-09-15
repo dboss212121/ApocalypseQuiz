@@ -8,19 +8,19 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "predeploy": "npx expo export",
+    "predeploy": "npx expo export --platform web --output-dir dist --no-minify --clear",
+    "postdeploy": "copy dist\\index.html dist\\404.html && echo. > dist\\.nojekyll",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@expo/metro-runtime": "~5.0.4",
-    "expo": "54",
+    "expo": "^54.0.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-native": "0.79.5",
+    "react-native-web": "^0.21.1",
     "expo-app-loading": "^2.1.1",
     "expo-av": "~15.1.7",
-    "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-native": "0.79.5",
-    "react-native-web": "^0.20.0"
+    "expo-status-bar": "~2.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

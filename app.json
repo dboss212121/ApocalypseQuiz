@@ -28,7 +28,10 @@
       }
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "favicon": "./assets/icon.png",
+      "build": {
+        "publicPath": "./"
+      }
     }
   }
 }
