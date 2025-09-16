@@ -1992,7 +1992,7 @@ creditsInner: {
 creditsText: {
   fontSize: 16,
   lineHeight: 24,
-  color: '#00ff00',
+  color: '#FC9B89',
   textAlign: 'center',
   paddingHorizontal: 12,
   flexShrink: 1,
