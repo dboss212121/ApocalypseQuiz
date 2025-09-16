@@ -1428,7 +1428,7 @@ if (mode === "secret" && secretStage === 1) {
   // Instead of returning here, render inside main component JSX
   return (
     <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>THE AIR GOES QUIET. WHAT DO YOU DO?</Text>
+      <Text style={styles.header}>{"THE AIR GOES QUIET. WHAT DO YOU DO?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/thedoor.png" }}
         style={styles.image}
@@ -1496,7 +1496,7 @@ if (mode === "secret" && secretStage === 2) {
 
   return (
     <View style={styles.fullScreenContainer}>
-      <Text style={styles.header}>THE HORIZON SHIFTS. WHAT'S YOUR MOVE?</Text>
+      <Text style={styles.header}>{"THE HORIZON SHIFTS. WHAT'S YOUR MOVE?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/secretroom.png" }}
         style={styles.image}
@@ -1569,7 +1569,7 @@ if (mode === "secret" && secretStage === 3) {
 
   return (
     <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>A STRANGE ENERGY SURROUNDS YOU. WHAT DO YOU DO?</Text>
+      <Text style={styles.header}>{"A STRANGE ENERGY SURROUNDS YOU. WHAT DO YOU DO?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/agents.png" }}
         style={styles.image}
@@ -1622,7 +1622,7 @@ if (mode === "secret" && secretStage === 3) {
 if (mode === "secret" && secretStage === 4) {
   return (
     <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>🏆 YOU BEAT MY APP 🏆</Text>
+      <Text style={styles.header}>{"🏆 YOU BEAT MY APP 🏆"}</Text>
       <Image
         source={{
           uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/utopia.png",
@@ -1630,7 +1630,7 @@ if (mode === "secret" && secretStage === 4) {
         style={styles.image}
       />
       <Text style={styles.creditsText}>
-        Against all odds, you found the hidden path and conquered it.
+        {"Against all odds, you found the hidden path and conquered it."}
       </Text>
 
       <TouchableOpacity
@@ -1749,7 +1749,11 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingHorizontal: 20,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // 👈 prevents layout stretch
+    width: '100%',
+    maxWidth: 600,
+    marginHorizontal: 'auto',
+    position: 'relative',
   },
   header: {
     fontSize: 20,
