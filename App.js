@@ -1335,39 +1335,34 @@ const getRandomQuestions = (num) => {
     return <TitleScreen onStart={() => setIsTitleVisible(false)} />;
   }
 
-// ===== Credits Screen =====
 if (mode === "credits") {
   return (
     <ScrollView contentContainerStyle={[styles.fullScreenContainer, { position: 'relative' }]}>
-      <Text style={styles.header}>CREDITS</Text>
+      {/* Header */}
+      <View style={styles.headerWrapper}>
+        <Text style={styles.header}>CREDITS</Text>
+      </View>
 
-      <View style={{ overflow: "hidden", width: "100%", maxWidth: 500, marginHorizontal: "auto", height: 300 }}>
-        <Animated.View
-          style={{
-            transform: [{ translateY: scrollY }],
-          }}
-        >
+      {/* Animated Credits Block */}
+      <View style={styles.creditsContainer}>
+        <Animated.View style={{ transform: [{ translateY: scrollY }] }}>
           <View
             onLayout={(e) => setContentHeight(e.nativeEvent.layout.height)}
-            style={{ margin: 0, padding: 0 }}
+            style={styles.creditsInner}
           >
             <Text style={styles.creditsText}>
-              Developed by: You{"\n"}
-              {"\n"}Art: Your Team{"\n"}
-              {"\n"}Special Thanks: Players like you{"\n"}
-              {"\n"}And anyone else you want to list...
+              {"Developed by: You\n\nArt: Your Team\n\nSpecial Thanks: Players like you\n\nAnd anyone else you want to list..."}
             </Text>
           </View>
         </Animated.View>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setMode(null)}
-      >
+      {/* Back Button */}
+      <TouchableOpacity style={styles.button} onPress={() => setMode(null)}>
         <Text style={styles.buttonText}>Back</Text>
       </TouchableOpacity>
 
+      {/* Mute Button */}
       <MuteButton />
     </ScrollView>
   );
@@ -1968,6 +1963,42 @@ secretProgressFill: {
   backgroundColor: '#00ccff',
   borderRightWidth: 1,
   borderRightColor: '#003366',
+},
+
+headerWrapper: {
+  width: '100%',
+  maxWidth: 500,
+  alignSelf: 'center',
+  paddingHorizontal: 12,
+},
+
+creditsContainer: {
+  overflow: 'hidden',
+  width: '100%',
+  maxWidth: 500,
+  marginHorizontal: 'auto',
+  height: 300,
+  alignSelf: 'center',
+},
+
+creditsInner: {
+  margin: 0,
+  padding: 0,
+  width: '100%',
+  maxWidth: 500,
+  alignSelf: 'center',
+},
+
+creditsText: {
+  fontSize: 16,
+  lineHeight: 24,
+  color: '#00ff00',
+  textAlign: 'center',
+  paddingHorizontal: 12,
+  flexShrink: 1,
+  width: '100%',
+  maxWidth: 500,
+  alignSelf: 'center',
 },
 
 });
