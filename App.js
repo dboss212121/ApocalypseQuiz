@@ -1746,7 +1746,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start', // 👈 prevents layout stretch
     width: '100%',
-    maxWidth: 600,
+    maxWidth: Dimensions.get('window').width > 1000 ? 1000 : '100%',
     marginHorizontal: 'auto',
     position: 'relative',
   },
@@ -1992,7 +1992,7 @@ creditsInner: {
 creditsText: {
   fontSize: 16,
   lineHeight: 24,
-  color: '#FC9B89',
+  color: '#89ebfcff',
   textAlign: 'center',
   paddingHorizontal: 12,
   flexShrink: 1,
