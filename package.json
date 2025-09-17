@@ -13,17 +13,18 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "expo": "^54.0.7",
+    "expo": "^54.0.8",
+    "expo-app-loading": "^2.1.1",
+    "expo-av": "~15.1.7",
+    "expo-status-bar": "~2.2.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-native": "0.79.5",
-    "react-native-web": "^0.21.1",
-    "expo-app-loading": "^2.1.1",
-    "expo-av": "~15.1.7",
-    "expo-status-bar": "~2.2.3"
+    "react-native-web": "^0.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@expo/webpack-config": "^19.0.1",
     "gh-pages": "^6.3.0"
   },
   "private": true
