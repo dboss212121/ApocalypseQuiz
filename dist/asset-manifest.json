@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/ApocalypseQuiz/static/js/main.2da2fd8e.js",
+    "static/js/342.adde2fd0.js": "/ApocalypseQuiz/static/js/342.adde2fd0.js",
+    "static/media/TLPR.mp3": "/ApocalypseQuiz/static/media/TLPR.626014ed0cdcf6b8d8d0.mp3",
+    "static/media/TLA.mp3": "/ApocalypseQuiz/static/media/TLA.c8e9f62a10ce0aa5b6ed.mp3",
+    "static/media/TLCKMD.mp3": "/ApocalypseQuiz/static/media/TLCKMD.4d085aaa19797a22276e.mp3",
+    "static/media/TLTV.mp3": "/ApocalypseQuiz/static/media/TLTV.d6881ae743b3fc1f4e2c.mp3",
+    "static/media/LPME.mp3": "/ApocalypseQuiz/static/media/LPME.3d1d5df343b15b509c46.mp3",
+    "static/media/PressStart2P-Regular.ttf": "/ApocalypseQuiz/static/media/PressStart2P-Regular.21503c6a5385ab41dde9.ttf",
+    "favicon.ico": "/ApocalypseQuiz/favicon.ico",
+    "index.html": "/ApocalypseQuiz/index.html",
+    "favicon-32.png": "/ApocalypseQuiz/favicon-32.png",
+    "favicon-16.png": "/ApocalypseQuiz/favicon-16.png",
+    "serve.json": "/ApocalypseQuiz/serve.json",
+    "manifest.json": "/ApocalypseQuiz/manifest.json",
+    "main.2da2fd8e.js.map": "/ApocalypseQuiz/static/js/main.2da2fd8e.js.map",
+    "342.adde2fd0.js.map": "/ApocalypseQuiz/static/js/342.adde2fd0.js.map"
+  },
+  "entrypoints": [
+    "static/js/342.adde2fd0.js",
+    "static/js/main.2da2fd8e.js"
+  ]
+}
