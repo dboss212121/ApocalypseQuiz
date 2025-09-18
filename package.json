@@ -8,9 +8,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "predeploy": "npx expo export --platform web --output-dir dist --no-minify --clear",
-    "postdeploy": "copy dist\\index.html dist\\404.html && echo. > dist\\.nojekyll",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npx expo export:web",
+    "postdeploy": "copy web-build\\index.html web-build\\404.html && echo. > web-build\\.nojekyll",
+    "deploy": "gh-pages -d web-build",
+    "deploy-mutants": "bash deploy-mutants.sh"
   },
   "dependencies": {
     "expo": "^54.0.8",
