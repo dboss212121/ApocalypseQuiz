@@ -538,16 +538,16 @@ image: {
   ]
 },
 {
-  question: "YOU FIND A GLOWING RUBBER DUCK. YOU:",
-  image: { 
+  question: "A GIANT DUCK DESCENDS FROM THE SKY. YOU:",
+  image: {
     uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/duck.png",
-    alt: "A neon rubber duck floating in a puddle" 
+    alt: "A towering duck with glowing eyes and a suspiciously regal aura"
   },
   options: [
-  { text: 'Make it the team mascot', value: 'duckPainter' },
-  { text: 'Use it as a morale booster', value: 'mutantHRManager' },
-  { text: 'Squish it repeatedly', value: 'hamsterWarlord' },
-  { text: 'Ask it for stock tips', value: 'radioactivePhilosopher' },
+    { text: "Declare it your new president", value: "duckPainter" },
+    { text: "Offer it breadcrumbs and existential riddles", value: "mutantHRManager" },
+    { text: "Challenge it to a staring contest", value: "hamsterWarlord" },
+    { text: "Ask if it’s the final boss or just lost", value: "radioactivePhilosopher" }
   ]
 },
 {
@@ -953,6 +953,13 @@ export default function App() {
   const [secretBoxTaps, setSecretBoxTaps] = useState([false, false, false, false]);
   const [secretStage, setSecretStage] = useState(1); // 1 = first page, 2 = second page
   const [isMuted, setIsMuted] = useState(false);
+  const screenHeight = Dimensions.get("window").height;
+  const [creditsOffsetY, setCreditsOffsetY] = useState(0);
+  const flicker = useRef(new Animated.Value(1)).current;
+  const jitterX = useRef(new Animated.Value(0)).current;       // horizontal shift
+  const [showAccessOverlay, setShowAccessOverlay] = useState(false);
+  const overlayOpacity = useRef(new Animated.Value(0)).current; // text fade
+  const screenOpacity = useRef(new Animated.Value(0)).current;  // secret screen fade
 
 const previousModeRef = useRef(null);
 
@@ -962,25 +969,78 @@ useEffect(() => {
   }
 }, [mode]);
 
+//Flicker effect for secret
+
+useEffect(() => {
+  if (mode === "secret") {
+    setShowAccessOverlay(true);
+
+    // Start flicker + jitter
+    Animated.parallel([
+      Animated.sequence([
+        Animated.timing(flicker, { toValue: 0.3, duration: 70, useNativeDriver: true }),
+        Animated.timing(flicker, { toValue: 1, duration: 100, useNativeDriver: true }),
+        Animated.timing(flicker, { toValue: 0.6, duration: 60, useNativeDriver: true }),
+        Animated.timing(flicker, { toValue: 1, duration: 120, useNativeDriver: true }),
+      ]),
+      Animated.sequence([
+        Animated.timing(jitterX, { toValue: -10, duration: 80, useNativeDriver: true }),
+        Animated.timing(jitterX, { toValue: 12, duration: 100, useNativeDriver: true }),
+        Animated.timing(jitterX, { toValue: -6, duration: 70, useNativeDriver: true }),
+        Animated.timing(jitterX, { toValue: 0, duration: 120, useNativeDriver: true }),
+      ]),
+    ]).start();
+
+    // Fade in overlay text
+    Animated.sequence([
+      Animated.timing(overlayOpacity, { toValue: 1, duration: 500, useNativeDriver: true }),
+      Animated.delay(600),
+      Animated.timing(overlayOpacity, { toValue: 0, duration: 500, useNativeDriver: true }),
+      Animated.timing(screenOpacity, { toValue: 1, duration: 600, useNativeDriver: true }),
+    ]).start(() => {
+      setShowAccessOverlay(false);
+    });
+  }
+}, [mode]);
+
   // --- music pause/resume on mute ---
 const toggleMute = async () => {
-  const newMuted = !isMuted; // compute new state
+  const newMuted = !isMuted;
   setIsMuted(newMuted);
 
-  const allSounds = [titleSound, quizSound, creditsSound];
+  // Pause or resume all loaded sounds
+  const allSounds = [titleSound, quizSound, creditsSound, secretSound, secretResultSound];
   for (let s of allSounds) {
     if (!s) continue;
-
     const status = await s.getStatusAsync();
     if (!status.isLoaded) continue;
-
     if (newMuted) {
-      // pause if muted
       if (status.isPlaying) await s.pauseAsync();
     } else {
-      // resume if unmuted
       if (!status.isPlaying) await s.playAsync();
     }
+  }
+
+  // If unmuting and the correct track is missing, re-initialize it
+  if (!newMuted) {
+    let desiredTrack = null;
+    if (mode === "basic" || mode === "advanced" || mode === "full") {
+      desiredTrack = "quiz";
+    } else if (mode === "credits") {
+      desiredTrack = "credits";
+    } else if (mode === "secret" && secretStage < 4) {
+      desiredTrack = "secret";
+    } else if (mode === "secret" && secretStage === 4) {
+      desiredTrack = "secretResult";
+    } else if (mode === null) {
+      desiredTrack = "title";
+    }
+
+    if (desiredTrack === "title" && !titleSound) await playTitleMusic();
+    else if (desiredTrack === "quiz" && !quizSound) await playQuizMusic();
+    else if (desiredTrack === "credits" && !creditsSound) await playCreditsMusic();
+    else if (desiredTrack === "secret" && !secretSound) await playSecretMusic();
+    else if (desiredTrack === "secretResult" && !secretResultSound) await playSecretResultMusic();
   }
 };
 
@@ -1191,6 +1251,9 @@ async function stopAllMusic() {
 }
 
 // music control effect
+
+const lastTrackRef = useRef(null);
+
 useEffect(() => {
   let isMounted = true;
 
@@ -1211,41 +1274,30 @@ useEffect(() => {
       desiredTrack = "title";
     }
 
-    // Stop anything that is playing but isn’t desired
-    if (desiredTrack !== "title" && titleSound) {
-      await titleSound.stopAsync();
-      await titleSound.unloadAsync();
-      setTitleSound(null);
-    }
-    if (desiredTrack !== "quiz" && quizSound) {
-      await quizSound.stopAsync();
-      await quizSound.unloadAsync();
-      setQuizSound(null);
-    }
-    if (desiredTrack !== "credits" && creditsSound) {
-      await creditsSound.stopAsync();
-      await creditsSound.unloadAsync();
-      setCreditsSound(null);
-    }
-    if (desiredTrack !== "secret" && secretSound) {
-      await secretSound.stopAsync();
-      await secretSound.unloadAsync();
-      setSecretSound(null);
-    }
-    if (desiredTrack !== "secretResult" && secretResultSound) {
-      await secretResultSound.stopAsync();
-      await secretResultSound.unloadAsync();
-      setSecretResultSound(null);
+    // Only stop/unload tracks that are not the desired one
+    const stopPromises = [];
+    if (desiredTrack !== "title" && titleSound) stopPromises.push(titleSound.stopAsync().then(() => titleSound.unloadAsync()).then(() => setTitleSound(null)));
+    if (desiredTrack !== "quiz" && quizSound) stopPromises.push(quizSound.stopAsync().then(() => quizSound.unloadAsync()).then(() => setQuizSound(null)));
+    if (desiredTrack !== "credits" && creditsSound) stopPromises.push(creditsSound.stopAsync().then(() => creditsSound.unloadAsync()).then(() => setCreditsSound(null)));
+    if (desiredTrack !== "secret" && secretSound) stopPromises.push(secretSound.stopAsync().then(() => secretSound.unloadAsync()).then(() => setSecretSound(null)));
+    if (desiredTrack !== "secretResult" && secretResultSound) stopPromises.push(secretResultSound.stopAsync().then(() => secretResultSound.unloadAsync()).then(() => setSecretResultSound(null)));
+
+    await Promise.all(stopPromises);
+
+    // Start only the correct track for the mode, and only if not muted and not already started
+    if (isMuted) {
+      lastTrackRef.current = null;
+      return;
     }
 
-    // Start the desired track if not muted
-    if (isMuted) return; // <--- skip starting music if muted
+    if (lastTrackRef.current === desiredTrack) return; // already started
+    lastTrackRef.current = desiredTrack;
 
-    if (desiredTrack === "title" && !titleSound) await playTitleMusic();
-    else if (desiredTrack === "quiz" && !quizSound) await playQuizMusic();
-    else if (desiredTrack === "credits" && !creditsSound) await playCreditsMusic();
-    else if (desiredTrack === "secret" && !secretSound) await playSecretMusic();
-    else if (desiredTrack === "secretResult" && !secretResultSound) await playSecretResultMusic();
+    if (desiredTrack === "title") await playTitleMusic();
+    else if (desiredTrack === "quiz") await playQuizMusic();
+    else if (desiredTrack === "credits") await playCreditsMusic();
+    else if (desiredTrack === "secret") await playSecretMusic();
+    else if (desiredTrack === "secretResult") await playSecretResultMusic();
   };
 
   handleMusic();
@@ -1253,23 +1305,18 @@ useEffect(() => {
   return () => {
     isMounted = false;
   };
-}, [mode, isMuted, secretStage]);
+}, [mode, isMuted, secretStage, titleSound, quizSound, creditsSound, secretSound, secretResultSound]);
 
 // Credit Effects
 useEffect(() => {
   if (mode === "credits" && contentHeight > 0) {
     const screenHeight = Dimensions.get("window").height;
 
-    // Start just below the bottom edge
+    // Start just below the visible credits block
     scrollY.setValue(screenHeight - contentHeight);
 
-    // total distance to travel (from bottom of screen to fully off top)
     const distance = contentHeight + screenHeight;
-
-    // desired speed in pixels per second
-    const speed = 50; // 👈 adjust this value to make it faster/slower
-
-    // duration in ms = distance / speed * 1000
+    const speed = 50;
     const duration = (distance / speed) * 1000;
 
     Animated.timing(scrollY, {
@@ -1279,7 +1326,7 @@ useEffect(() => {
       useNativeDriver: true,
     }).start();
   }
-}, [mode, contentHeight]);
+}, [mode, contentHeight, creditsOffsetY]);
 
   useEffect(() => {
     if (mode) {
@@ -1330,43 +1377,62 @@ const getRandomQuestions = (num) => {
     return <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} onError={console.warn} />;
   }
 
-  // ===== Title Screen before anything =====
+// ===== Title Screen before anything =====
   if (isTitleVisible) {
     return <TitleScreen onStart={() => setIsTitleVisible(false)} />;
   }
 
+// ===== Credits Screen =====
 if (mode === "credits") {
   return (
-    <ScrollView contentContainerStyle={[styles.fullScreenContainer, { position: 'relative' }]}>
-      {/* Header */}
-      <View style={styles.headerWrapper}>
-        <Text style={styles.header}>CREDITS</Text>
-      </View>
+    <View style={{ flex: 1, backgroundColor: '#000' }}>
+      <ScrollView
+        contentContainerStyle={[
+          styles.fullScreenContainer,
+          {
+            flexGrow: 1,
+            justifyContent: 'space-between', // 👈 pushes content to top and bottom
+            paddingBottom: 40, // 👈 optional: adds breathing room below Back button
+          },
+        ]}
+      >
+        {/* Header */}
+        <View style={styles.headerWrapper}>
+          <Text style={styles.header}>CREDITS</Text>
+        </View>
 
-      {/* Animated Credits Block */}
-      <View style={styles.creditsContainer}>
-        <Animated.View style={{ transform: [{ translateY: scrollY }] }}>
+        {/* Animated Credits Block */}
           <View
-            onLayout={(e) => setContentHeight(e.nativeEvent.layout.height)}
-            style={styles.creditsInner}
+            style={styles.creditsContainer}
+            onLayout={(e) => {
+              const offsetY = e.nativeEvent.layout.y;
+              setCreditsOffsetY(offsetY);
+            }}
           >
-            <Text style={styles.creditsText}>
-              {"Developed by: You\n\nArt: Your Team\n\nSpecial Thanks: Players like you\n\nAnd anyone else you want to list..."}
-            </Text>
+            <Animated.View style={{ transform: [{ translateY: scrollY }] }}>
+              <View
+                onLayout={(e) => setContentHeight(e.nativeEvent.layout.height)}
+                style={styles.creditsInner}
+              >
+                <Text style={styles.creditsText}>
+                  {"DEVELOPED BY\nDboss212121\n\nARTWORK\nAI\n\nMUSIC\nTrevor Lentz - Ascend\nTrevor Lentz - Can't Keep Me down\nTrevor Lentz - Pixel River\nTrevor Lentz - This Sky of Mine\nTrevor Lentz - The Void\nLenny Pixels - Mother Board Encore - 8bit"}
+                </Text>
+              </View>
+            </Animated.View>
           </View>
-        </Animated.View>
-      </View>
 
-      {/* Back Button */}
-      <TouchableOpacity style={styles.button} onPress={() => setMode(null)}>
-        <Text style={styles.buttonText}>Back</Text>
-      </TouchableOpacity>
+        {/* Back Button */}
+        <TouchableOpacity style={styles.button} onPress={() => setMode(null)}>
+          <Text style={styles.buttonText}>Back</Text>
+        </TouchableOpacity>
 
-      {/* Mute Button */}
-      <MuteButton />
-    </ScrollView>
+        {/* Mute Button */}
+        <MuteButton />
+      </ScrollView>
+    </View>
   );
 }
+
 
   // ===== Mode Selection =====
   if (!mode) {
@@ -1421,18 +1487,29 @@ if (mode === "secret" && secretStage === 1) {
   };
 
   // Instead of returning here, render inside main component JSX
-  return (
-    <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>{"THE AIR GOES QUIET. WHAT DO YOU DO?"}</Text>
+return (
+  <Animated.View style={{ flex: 1, opacity: flicker, transform: [{ translateX: jitterX }] }}>
+    {showAccessOverlay && (
+      <Animated.View style={[styles.accessOverlay, { opacity: overlayOpacity }]}>
+        <Text style={styles.accessText}>OVERRIDE PROTOCOL ENGAGED</Text>
+        <Text style={styles.accessText}>ACCESS GRANTED: ████████</Text>
+      </Animated.View>
+    )}
+
+    <Animated.View style={{ flex: 1, opacity: screenOpacity }}>
+      <ScrollView contentContainerStyle={styles.fullScreenContainer}>
+
+
+      <Text style={styles.header}>{"YOU FOUND THE DOOR. WHAT DO YOU DO?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/thedoor.png" }}
         style={styles.image}
       />
       {[
         { text: "Hold your breath and wait", value: "doomDJ" },
-        { text: "Signal your crew to regroup", value: "mutantHRManager" },
-        { text: "Sprint toward the sound", value: "screamerScout" },
-        { text: "Hum back at the horizon", value: "trashOracle" },
+        { text: "Pick the lock", value: "mutantHRManager" },
+        { text: "Break it down", value: "screamerScout" },
+        { text: "Hum at the door", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
           key={i}
@@ -1471,6 +1548,8 @@ if (mode === "secret" && secretStage === 1) {
         <Text style={styles.buttonText}>QUIT</Text>
       </TouchableOpacity>
     </ScrollView>
+     </Animated.View>
+  </Animated.View>
   );
 }
 
@@ -1491,7 +1570,7 @@ if (mode === "secret" && secretStage === 2) {
 
   return (
     <View style={styles.fullScreenContainer}>
-      <Text style={styles.header}>{"THE HORIZON SHIFTS. WHAT'S YOUR MOVE?"}</Text>
+      <Text style={styles.header}>{"YOU FOUND THE ROOM. WHAT DO YOU DO?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/secretroom.png" }}
         style={styles.image}
@@ -1500,7 +1579,7 @@ if (mode === "secret" && secretStage === 2) {
       {[
         { text: "Step cautiously forward", value: "doomDJ" },
         { text: "Observe silently", value: "mutantHRManager" },
-        { text: "Run toward the light", value: "screamerScout" },
+        { text: "Run toward the center", value: "screamerScout" },
         { text: "Call out a strange sound", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
@@ -1564,17 +1643,17 @@ if (mode === "secret" && secretStage === 3) {
 
   return (
     <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>{"A STRANGE ENERGY SURROUNDS YOU. WHAT DO YOU DO?"}</Text>
+      <Text style={styles.header}>{"THEY KNOW YOU'RE HERE. WHAT DO YOU DO?"}</Text>
       <Image
         source={{ uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/agents.png" }}
         style={styles.image}
       />
 
       {[
-        { text: "Step boldly forward", value: "doomDJ" },
-        { text: "Wait and watch", value: "mutantHRManager" },
-        { text: "Leap toward the source", value: "screamerScout" },
-        { text: "Whisper a strange chant", value: "trashOracle" },
+        { text: "Fight them!", value: "doomDJ" },
+        { text: "Make a deal", value: "mutantHRManager" },
+        { text: "Run", value: "screamerScout" },
+        { text: "Pretend you are a statue", value: "trashOracle" },
       ].map((opt, i) => (
         <TouchableOpacity
           key={i}
@@ -1617,7 +1696,7 @@ if (mode === "secret" && secretStage === 3) {
 if (mode === "secret" && secretStage === 4) {
   return (
     <ScrollView contentContainerStyle={styles.fullScreenContainer}>
-      <Text style={styles.header}>{"🏆 YOU BEAT MY APP 🏆"}</Text>
+      <Text style={styles.header}>{"🏆YOU ESCAPED CONGRATULATIONS!🏆"}</Text>
       <Image
         source={{
           uri: "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/utopia.png",
@@ -1625,7 +1704,7 @@ if (mode === "secret" && secretStage === 4) {
         style={styles.image}
       />
       <Text style={styles.creditsText}>
-        {"Against all odds, you found the hidden path and conquered it."}
+        {"You discovered the truth! There never was an apocalypse.\nIt was all a simulation to find the perfect apocalypse survivor like yourself\nnoththing else to see here..."}
       </Text>
 
       <TouchableOpacity
@@ -1746,11 +1825,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start', // 👈 prevents layout stretch
     width: '100%',
-    maxWidth: Dimensions.get('window').width > 1000 ? 1000 : '100%',
     marginHorizontal: 'auto',
     position: 'relative',
   },
   header: {
+    fontFamily: 'press-start',
     fontSize: 20,
     lineHeight: 28,
     textAlign: 'center',
@@ -1903,7 +1982,7 @@ creditsButton: {
 },
 creditsText: {
   fontSize: 20,
-  color: '#00FF00', // 👈 neon green like your buttons
+  color: '#33bbff',
   textAlign: 'center',
   lineHeight: 28,
     fontFamily: 'press-start',
@@ -1989,16 +2068,24 @@ creditsInner: {
   alignSelf: 'center',
 },
 
-creditsText: {
-  fontSize: 16,
-  lineHeight: 24,
-  color: '#89ebfcff',
-  textAlign: 'center',
-  paddingHorizontal: 12,
-  flexShrink: 1,
+accessOverlay: {
+  position: 'absolute',
+  top: 0,
+  left: 0,
   width: '100%',
-  maxWidth: 500,
-  alignSelf: 'center',
+  height: '100%',
+  backgroundColor: 'black',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 999,
 },
 
+accessText: {
+  color: '#0ff',
+  fontSize: 18,
+  fontFamily: 'monospace',
+  letterSpacing: 2,
+  textAlign: 'center',
+  marginVertical: 4,
+},
 });
