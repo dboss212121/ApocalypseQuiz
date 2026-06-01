@@ -15,9 +15,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -29,9 +27,8 @@
     },
     "web": {
       "favicon": "./assets/icon.png",
-      "build": {
-        "publicPath": "./"
-      }
+      "output": "static",
+      "publicPath": "./"
     }
   }
 }
