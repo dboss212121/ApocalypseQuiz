@@ -1,0 +1,37 @@
+export default {
+  expo: {
+    name: "ApocQuiz",
+    slug: "ApocQuiz",
+    version: "1.0.0",
+    platforms: ["ios", "android", "web"],
+    orientation: "portrait",
+    userInterfaceStyle: "light",
+    icon: "./assets/icon.png",
+    splash: {
+      image: "./assets/icon.png",
+      resizeMode: "contain",
+      backgroundColor: "#ffffff"
+    },
+    updates: {
+      fallbackToCacheTimeout: 0
+    },
+    assetBundlePatterns: ["**/*"],
+    ios: {
+      supportsTablet: true
+    },
+    android: {
+      adaptiveIcon: {
+        foregroundImage: "./assets/icon.png",
+        backgroundColor: "#ffffff"
+      }
+    },
+    web: {
+      favicon: "./assets/icon.png",
+      output: "static",
+      publicPath: "./"
+    },
+    experiments: {
+      staticRendering: false
+    }
+  }
+};
