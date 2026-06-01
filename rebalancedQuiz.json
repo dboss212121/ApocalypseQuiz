@@ -1,0 +1,1423 @@
+[
+  {
+    "question": "THE WORLD JUST ENDED. WHAT'S YOUR FIRST MOVE?",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/mushroomcloud.png",
+      "alt": "A rising mushroom cloud casting an eerie glow over ruins"
+    },
+    "options": [
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A STRANGE DEVICE HUMMING IN THE RUBBLE. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/buzzingmachine.png",
+      "alt": "A broken, buzzing machine with faint glowing wires"
+    },
+    "options": [
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      }
+    ]
+  },
+  {
+    "question": "A MUTANT RAT ARMY APPROACHES. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/ratarmyresized.png",
+      "alt": "A swarm of oversized glowing-eyed rats charging forward"
+    },
+    "options": [
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      }
+    ]
+  },
+  {
+    "question": "A STRANGER OFFERS YOU A GLOWING MUSHROOM. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/glowingmushroom.png",
+      "alt": "A strange bioluminescent mushroom glowing with green light"
+    },
+    "options": [
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      },
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      }
+    ]
+  },
+  {
+    "question": "YOUR WEAPON OF CHOICE IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/weapon.png",
+      "alt": "A pile of improvised weapons scattered across a cracked floor"
+    },
+    "options": [
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      }
+    ]
+  },
+  {
+    "question": "THE APOCALYPSE HAS TV AGAIN. YOUR SHOW?",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/tv.png",
+      "alt": "A cracked old television flickering with static"
+    },
+    "options": [
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      }
+    ]
+  },
+  {
+    "question": "HOW DO YOU START YOUR APOCALYPSE MORNING?",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/sunrise.png",
+      "alt": "A fiery sunrise breaking over a ruined wasteland"
+    },
+    "options": [
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      }
+    ]
+  },
+  {
+    "question": "YOU’RE INVITED TO A WASTELAND PARTY. YOUR GIFT IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/party.png",
+      "alt": "A flickering bonfire surrounded by scavenged party decorations"
+    },
+    "options": [
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A FUNCTIONAL VEHICLE. IT RUNS ON:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/vehicle.png",
+      "alt": "A rusted vehicle with strange tubes and glowing fuel tanks"
+    },
+    "options": [
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      }
+    ]
+  },
+  {
+    "question": "A GIANT ROBOT WANTS TO JOIN YOUR CREW. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/robot.png",
+      "alt": "A towering robot covered in dents and scavenged armor"
+    },
+    "options": [
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      }
+    ]
+  },
+  {
+    "question": "YOU CHECK INTO THE LAST HOTEL ON EARTH. THE COMPLIMENTARY ITEM IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/hotel.png",
+      "alt": "A crumbling hotel lobby with dusty chandeliers"
+    },
+    "options": [
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A LEGENDARY WEAPON IN THE RUINS. IT IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/weapon.png",
+      "alt": "An ominous weapon glinting in the rubble"
+    },
+    "options": [
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      }
+    ]
+  },
+  {
+    "question": "YOUR ENEMY FINALLY FALLS INTO YOUR TRAP. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/trap.png",
+      "alt": "A menacing pit trap surrounded by makeshift spikes"
+    },
+    "options": [
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      }
+    ]
+  },
+  {
+    "question": "A DERELICT BOAT WASHES ASHORE. YOUR FIRST MOVE IS TO:",
+    "image": {
+      "uri": "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/boat.png"
+    },
+    "alt": "Tactical belt with pouches",
+    "options": [
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      }
+    ]
+  },
+  {
+    "question": "YOU DISCOVER AN ABANDONED POOL IN THE WASTELAND. YOUR PLAN IS TO:",
+    "image": {
+      "uri": "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/pool.png"
+    },
+    "alt": "Derelict pool",
+    "options": [
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A TACTICAL BELT WITH MYSTERIOUS POUCHES. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/belt.png",
+      "alt": "A rugged tactical belt with oddly glowing pouches"
+    },
+    "options": [
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      }
+    ]
+  },
+  {
+    "question": "CHOOSE YOUR WASTELAND COMPANION ANIMAL:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/pet.png",
+      "alt": "A scrappy animal companion ready for chaos"
+    },
+    "options": [
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      }
+    ]
+  },
+  {
+    "question": "A STRANGER APPROACHES YOUR CAMP. YOU DECIDE TO:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/stranger.png",
+      "alt": "A mysterious figure standing at the edge of your campfire light"
+    },
+    "options": [
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      }
+    ]
+  },
+  {
+    "question": "YOU’RE ENROLLED IN THE LAST POST-APOCALYPTIC COLLEGE. YOUR MAJOR IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/college.png",
+      "alt": "A dilapidated college building with banners of odd symbols"
+    },
+    "options": [
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      },
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      }
+    ]
+  },
+  {
+    "question": "IN THE NEW ECONOMY, YOUR CURRENCY FEATURES:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/money.png",
+      "alt": "Crumpled bills with bizarre illustrations and symbols"
+    },
+    "options": [
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      }
+    ]
+  },
+  {
+    "question": "IT’S TIME FOR A DUEL. WHAT IS YOUR SECRET WEAPON OF CHOICE?:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/duel.png",
+      "alt": "A dusty dueling arena with strange improvised weapons"
+    },
+    "options": [
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      }
+    ]
+  },
+  {
+    "question": "WHAT’S YOUR MEAL PLAN?",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/meal.png",
+      "alt": "A questionable apocalypse meal served on a rusty plate"
+    },
+    "options": [
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      }
+    ]
+  },
+  {
+    "question": "YOUR BARRICADE IS THE LAST LINE OF DEFENSE AGAINST:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/barricade.png",
+      "alt": "Makeshift wooden barricade stacked with junkyard debris"
+    },
+    "options": [
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      }
+    ]
+  },
+  {
+    "question": "YOUR GANG FLAG PROUDLY DISPLAYS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/flag.png",
+      "alt": "Tattered gang flag waving in the radioactive wind"
+    },
+    "options": [
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      }
+    ]
+  },
+  {
+    "question": "YOUR KARAOKE PERFORMANCE TONIGHT IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/karaoke.png",
+      "alt": "A lone microphone glowing under a flickering neon light"
+    },
+    "options": [
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      }
+    ]
+  },
+  {
+    "question": "A STRANGE LIGHT APPEARS IN THE SKY. WHAT DO YOU DO?",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/light.png",
+      "alt": "Mysterious glowing light hovering in the night sky"
+    },
+    "options": [
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      }
+    ]
+  },
+  {
+    "question": "YOU HAVE A SMALL THUMB DRIVE FULL OF THE MOST IMPORTANT DATA FROM THE BEFORE TIMES. IT CONTAINS:",
+    "image": {
+      "uri": "https://raw.github.com/dboss212121/ApocalypseQuiz/main/assets/images/data.png"
+    },
+    "alt": "Data drive",
+    "options": [
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      }
+    ]
+  },
+  {
+    "question": "YOU STUMBLE UPON A MYSTERIOUS PORTAL. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/portal.png",
+      "alt": "A swirling portal shimmering with unknown energy"
+    },
+    "options": [
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      },
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND AN ABANDONED AMUSEMENT PARK. YOUR PLAN IS:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/park.png",
+      "alt": "Rusty rides and eerie carnival lights"
+    },
+    "options": [
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      }
+    ]
+  },
+  {
+    "question": "YOU DISCOVER A TALKING TOASTER. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/toaster.png",
+      "alt": "A sentient toaster blinking like it has secrets"
+    },
+    "options": [
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      }
+    ]
+  },
+  {
+    "question": "YOU COME ACROSS A GIANT PILE OF SOCKS. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/socks.png",
+      "alt": "A mountain of mismatched, dusty socks"
+    },
+    "options": [
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      }
+    ]
+  },
+  {
+    "question": "A MYSTERIOUS FOG ROLLS IN. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/fog.png",
+      "alt": "Thick fog swallowing the landscape"
+    },
+    "options": [
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A STRANGE MUSICAL INSTRUMENT. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/instrument.png",
+      "alt": "An odd instrument with glowing strings"
+    },
+    "options": [
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      }
+    ]
+  },
+  {
+    "question": "YOU SPOT A HOVERING DRONE. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/drone.png",
+      "alt": "A small drone hovering and scanning the area"
+    },
+    "options": [
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A MYSTERIOUS CHEST IN THE DESERT. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/chest.png",
+      "alt": "An old chest half-buried in sand"
+    },
+    "options": [
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      }
+    ]
+  },
+  {
+    "question": "YOU ENCOUNTER A HACKER WITH STRANGE TACTICS. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/hacker.png",
+      "alt": "A hooded figure surrounded by floating code"
+    },
+    "options": [
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      }
+    ]
+  },
+  {
+    "question": "YOU STUMBLE UPON A FLOATING ISLAND. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/floatingisland.png",
+      "alt": "A small island hovering mysteriously above the ground"
+    },
+    "options": [
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      }
+    ]
+  },
+  {
+    "question": "A GIANT DUCK DESCENDS FROM THE SKY. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/giantduck.png",
+      "alt": "A towering duck with glowing eyes and a suspiciously regal aura"
+    },
+    "options": [
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      },
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      }
+    ]
+  },
+  {
+    "question": "A GIANT JELLO MONSTER APPROACHES. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/jello.png",
+      "alt": "A wobbling, translucent gelatinous creature"
+    },
+    "options": [
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      }
+    ]
+  },
+  {
+    "question": "YOU DISCOVER A HAT THAT GIVES STRANGE POWERS. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/magichat.png",
+      "alt": "A tall hat glowing with arcane energy"
+    },
+    "options": [
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A PILE OF MYSTICAL TOAST. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/toast.png",
+      "alt": "Slices of glowing toast stacked in an odd pattern"
+    },
+    "options": [
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      }
+    ]
+  },
+  {
+    "question": "A STRANGE TUNNEL OF STUFFED ANIMALS. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/teddytunnel.png",
+      "alt": "A twisting tunnel made entirely of socks"
+    },
+    "options": [
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      },
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A ROBOT BUTTERFLY. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/butterfly.png",
+      "alt": "A giant frowning butterfly perched on a rock"
+    },
+    "options": [
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "radioactivePhilosopher",
+        "text": "Ask the chair if it remembers its tree-life before death"
+      },
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      },
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      }
+    ]
+  },
+  {
+    "question": "A FLOATING ICE CREAM CONE BEGS FOR HELP. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/icecream.png",
+      "alt": "A hovering ice cream cone with pleading eyes"
+    },
+    "options": [
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      },
+      {
+        "value": "cockroachNegotiator",
+        "text": "Use it to create a trap"
+      },
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A MYSTICAL BROOM. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/broom.png",
+      "alt": "A broom glowing faintly and hovering slightly"
+    },
+    "options": [
+      {
+        "value": "bureaucracyGhoul",
+        "text": "Organize their cheese council with parliamentary rules"
+      },
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      }
+    ]
+  },
+  {
+    "question": "A TALKING ROCK OFFERS YOU ADVICE. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/rock.png",
+      "alt": "A small rock with a mouth and tiny eyes"
+    },
+    "options": [
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      },
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      }
+    ]
+  },
+  {
+    "question": "YOU FIND A GIANT SLIPPERY BANANA. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/banana.png",
+      "alt": "A massive banana sliding down a hill"
+    },
+    "options": [
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "fogMechanic",
+        "text": "Insert a coupon for ‘One Free Existential Crisis’ and wait for it to vend enlightenment"
+      }
+    ]
+  },
+  {
+    "question": "A UNICORN DEMANDS PAYMENT IN GLITTER. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/unicorn.png",
+      "alt": "A unicorn glaring, its horn glowing like a credit card machine"
+    },
+    "options": [
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "trashOracle",
+        "text": "Use it to predict the future"
+      }
+    ]
+  },
+  {
+    "question": "BIGFOOT APPLIES FOR A JOB AS YOUR ROOMMATE. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/bigfoot.png",
+      "alt": "Bigfoot holding a poorly written resume and a coffee mug"
+    },
+    "options": [
+      {
+        "value": "doomDJ",
+        "text": "Promote the mixtape aggressively online"
+      },
+      {
+        "value": "squirrelTamer",
+        "text": "A horde of caffeinated squirrels"
+      },
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      }
+    ]
+  },
+  {
+    "question": "A CHUPACABRA OPENS A TACO TRUCK. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/chupacabra.png",
+      "alt": "A chupacabra wearing an apron, handing out tacos suspiciously"
+    },
+    "options": [
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "kaleChampion",
+        "text": "Grow mushrooms in a toilet tank"
+      },
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      }
+    ]
+  },
+  {
+    "question": "ZOMBIES INVITE YOU TO THEIR BOOK CLUB. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/zombies.png",
+      "alt": "A group of zombies politely holding hardcover novels"
+    },
+    "options": [
+      {
+        "value": "mutantHRManager",
+        "text": "Invite the ghost to sit while you applaud respectfully"
+      },
+      {
+        "value": "molotovMixologist",
+        "text": "Swing it wildly"
+      },
+      {
+        "value": "screamerScout",
+        "text": "Roll through it screaming"
+      },
+      {
+        "value": "receiptGolem",
+        "text": "Help tally up skyscraper satisfaction scores"
+      }
+    ]
+  },
+  {
+    "question": "A VAMPIRE WANTS TO START A PODCAST. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/vampire.png",
+      "alt": "A vampire adjusting a microphone, avoiding its reflection in the pop filter"
+    },
+    "options": [
+      {
+        "value": "animalMime",
+        "text": "Punch the dunes until a scorpion agrees to fight in your honor"
+      },
+      {
+        "value": "neonGravedigger",
+        "text": "Sit with solemn dignity and declare yourself king of the graveyard"
+      },
+      {
+        "value": "balloonNecromancer",
+        "text": "Offer it a friendship bracelet made of spaghetti and hope for detente"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      }
+    ]
+  },
+  {
+    "question": "NESSIE EMAILS YOU A LINK TO THEIR NEW MIXTAPE. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/nessie.jpg",
+      "alt": "The Loch Ness monster wearing headphones, bobbing its head to beats"
+    },
+    "options": [
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      },
+      {
+        "value": "travelAgentOfTerror",
+        "text": "Climb atop it and proclaim yourself Sheriff of Sand Dollars"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      }
+    ]
+  },
+  {
+    "question": "GODZILLA APPEARS WITH A CLIPBOARD AND A SURVEY. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/godzilla.png",
+      "alt": "Godzilla politely adjusting glasses while holding a clipboard"
+    },
+    "options": [
+      {
+        "value": "gnocchiNomad",
+        "text": "Gnaw on the elders during negotiations"
+      },
+      {
+        "value": "glitterButcher",
+        "text": "Offer your entire savings account of rainbows"
+      },
+      {
+        "value": "hamsterWarlord",
+        "text": "Break the chair further and start a midnight wrestling match with shadows"
+      },
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      }
+    ]
+  },
+  {
+    "question": "A TRIBE OF TALKING CHEESE DEMANDS REPRESENTATION. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/cheese.png",
+      "alt": "A group of cheddar and brie wearing ceremonial robes, chanting"
+    },
+    "options": [
+      {
+        "value": "skeletonBarista",
+        "text": "Interrupt every episode with blood-slurping ASMR"
+      },
+      {
+        "value": "libraryCommando",
+        "text": "Take notes"
+      },
+      {
+        "value": "origamiDetective",
+        "text": "Learn their techniques"
+      },
+      {
+        "value": "apocalypseConspiracyTheorist",
+        "text": "Ask the chest whether it prefers tumbleweeds or tax audits"
+      }
+    ]
+  },
+  {
+    "question": "IN A CEMETERY, A GHOST OFFERS YOU A BROKEN LAWN CHAIR. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/ghost.png",
+      "alt": "A translucent ghost politely holding out a cracked lawn chair among gravestones"
+    },
+    "options": [
+      {
+        "value": "lavaLifeguard",
+        "text": "Challenge the bomb to a staring contest and lose dramatically"
+      },
+      {
+        "value": "cyborgCellist",
+        "text": "Make it your adviser"
+      },
+      {
+        "value": "yodelMechanic",
+        "text": "Recite the alphabet backwards while juggling expired batteries"
+      },
+      {
+        "value": "marshmallowGeneral",
+        "text": "Fan the chest with palm fronds and whisper “you’re doing great, buddy”"
+      }
+    ]
+  },
+  {
+    "question": "IN THE DESERT, YOU FIND A TREASURE CHEST HALF-BURIED IN DUNES. IT HUMS A COUNTRY SONG. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/treasurechest.png",
+      "alt": "A weathered treasure chest jutting from golden sand under a blazing sun, faint musical notes rising from it"
+    },
+    "options": [
+      {
+        "value": "duckPainter",
+        "text": "Ask if the horn also accepts interpretive dance"
+      }
+    ]
+  },
+  {
+    "question": "IN THE RUINS OF A FORMER LASER TAG ARENA, YOU FIND A BOMB DISGUISED AS A VENDING MACHINE. IT WHISPERS YOUR CHILDHOOD NICKNAME. YOU:",
+    "image": {
+      "uri": "https://raw.githubusercontent.com/dboss212121/ApocalypseQuiz/main/assets/images/defuse.png",
+      "alt": "A dusty vending machine with exposed wires and blinking lights, surrounded by cracked neon walls and scorched arcade carpet"
+    },
+    "options": []
+  }
+]
