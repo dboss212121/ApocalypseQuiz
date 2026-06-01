@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "homepage": "https://dboss212121.github.io/ApocalypseQuiz",
   "main": "index.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "predeploy": "npx expo export:web",
-    "postdeploy": "copy web-build\\index.html web-build\\404.html && echo. > web-build\\.nojekyll",
-    "deploy": "gh-pages -d web-build",
-    "deploy-mutants": "bash deploy-mutants.sh"
-  },
+"scripts": {
+  "start": "expo start",
+  "android": "expo start --android",
+  "ios": "expo start --ios",
+  "web": "expo start --web",
+
+  "predeploy": "npx expo export",
+  "postdeploy": "copy dist\\index.html dist\\404.html && echo. > dist\\.nojekyll",
+  "deploy": "gh-pages -d dist",
+
+  "deploy-mutants": "bash deploy-mutants.sh"
+},
 "dependencies": {
   "expo": "^54.0.13",
   "expo-av": "~15.1.7",
